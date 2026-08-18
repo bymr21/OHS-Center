@@ -22,7 +22,7 @@
             </div>
         </div>
 
-        <!-- Form Lengkap Sesuai Referensi Gambar -->
+        <!-- Form Lengkap -->
         <form id="ohsForm" class="bg-white p-6 rounded-b-2xl shadow-lg border border-slate-200 space-y-6">
             
             <!-- 1. Nama Karyawan -->
@@ -90,7 +90,7 @@
                     <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="areakerja" value="LAPANGAN" required class="mr-3"> LAPANGAN</label>
                     <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="areakerja" value="OFFICE" class="mr-3"> OFFICE</label>
                     <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="areakerja" value="LAPANGAN & OFFICE" class="mr-3"> LAPANGAN & OFFICE</label>
-                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="areakerja" value="Yang lain" class="mr-3"> Yang lain:</label>
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="areakerja" value="Yang lain" class="mr-3"> Yang lain</label>
                 </div>
             </div>
 
@@ -160,7 +160,7 @@
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">Berdasarkan kondisi di atas, bagaimana kesiapan Anda untuk bekerja sekarang? *</label>
                 <div class="text-xs text-slate-500 italic mb-3 bg-amber-50 p-3 rounded-lg border border-amber-200">
-                    Jika Anda merasa <strong>TIDAK FIT</strong> atau memilih <strong>'Sangat Terganggu'</strong> pada poin kondisi fokus dan pikiran pikiran, Anda <strong>WAJIB</strong> segera:
+                    Jika Anda merasa <strong>TIDAK FIT</strong> atau memilih <strong>'Sangat Terganggu'</strong> pada poin pikiran, Anda <strong>WAJIB</strong> segera:
                     <ol class="list-decimal list-inside mt-1 space-y-1">
                         <li>Lapor ke Pengawas/Foreman.</li>
                         <li>Kunjungi klinik site untuk observasi.</li>
@@ -197,16 +197,45 @@
             const areakerja = document.querySelector('input[name="areakerja"]:checked').value;
             const tidur = document.querySelector('input[name="waktutidur"]:checked').value;
             const kualitas = document.querySelector('input[name="kualitastidur"]:checked').value;
-            const gejala = Array.from(document.querySelectorAll('input[name="gejala"]:checked')).map(el => el.value);
+            const gejala = Array.from(document.querySelectorAll('input[name="gejala"]:checked')).map(el => el.value).join(', ');
             const fokus = document.querySelector('input[name="fokus"]:checked').value;
             const obat = document.querySelector('input[name="obat"]:checked').value;
             const kesiapan = document.querySelector('input[name="kesiapan"]:checked').value;
 
-            // Logika Deteksi Danger
+            // 1. Kirim data ke Google Sheets (Database) secara background
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbz5_e5RavmCvN9WJkxfsFwvlu-5A3TQi5jQ9KfwhxrHRQ1boinLOTUnPi3wzBEOUayw/exec';
+            
+            const formData = {
+                nama: nama,
+                nohp: nohp,
+                jadwalkerja: jadwal,
+                section: section,
+                golongan: golongan,
+                areakerja: areakerja,
+                waktutidur: tidur,
+                kualitastidur: kualitas,
+                gejala: gejala,
+                fokus: fokus,
+                obat: obat,
+                kesiapan: kesiapan
+            };
+
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            }).then(() => {
+                console.log('Data berhasil dikirim ke Database.');
+            }).catch(error => {
+                console.error('Error!', error.message);
+            });
+
+            // 2. Logika Deteksi Danger untuk format pesan WhatsApp
             const isDanger = (
                 tidur.includes("< 5 JAM") ||
                 kualitas.includes("SANGAT BURUK") || kualitas.includes("BURUK:") ||
-                gejala.some(g => g !== "TIDAK ADA GEJALA") ||
+                gejala !== "TIDAK ADA GEJALA" ||
                 fokus === "SEDIKIT TERGANGGU" || fokus === "SANGAT TERGANGGU" ||
                 obat === "YA" ||
                 kesiapan.includes("TIDAK")
@@ -215,7 +244,7 @@
             let pesan = "";
             if (isDanger) {
                 pesan = `🚨 *URGENT* 🚨%0A` +
-                        `*LAPORAN FIT TO WORK*%0A%0A` +
+                        `*LAPORAN FIT TO WORK - TIDAK FIT*%0A%0A` +
                         `Yth. Admin OHS,%0A` +
                         `Mohon perhatian, sistem mendeteksi potensi risiko kesehatan/fokus:%0A%0A` +
                         `*Nama:* ${nama}%0A` +
@@ -226,17 +255,28 @@
                         `*Area Kerja:* ${areakerja}%0A` +
                         `*Tidur:* ${tidur}%0A` +
                         `*Kualitas Tidur:* ${kualitas}%0A` +
-                        `*Gejala:* ${gejala.join(', ')}%0A` +
+                        `*Gejala:* ${gejala}%0A` +
                         `*Fokus:* ${fokus}%0A` +
                         `*Konsumsi Obat:* ${obat}%0A` +
                         `*Status:* ⚠️ TIDAK FIT / DANGER%0A%0A` +
                         `Mohon segera lakukan observasi/tindak lanjut kepada karyawan tersebut. Terima kasih.`;
             } else {
-                pesan = `✅ *LAPORAN FIT TO WORK - AMAN*%0A%0A` +
+                pesan = `✅ *LAPORAN FIT TO WORK - FIT*%0A%0A` +
                         `Yth. Admin OHS,%0A` +
                         `Berikut laporan harian Fit to Work:%0A%0A` +
                         `*Nama:* ${nama}%0A` +
                         `*No HP:* ${nohp}%0A` +
                         `*Jadwal:* ${jadwal}%0A` +
                         `*Section:* ${section}%0A` +
-                        `*Golongan:* ${golo
+                        `*Golongan:* ${golongan}%0A` +
+                        `*Area Kerja:* ${areakerja}%0A` +
+                        `*Status:* SIAP & FIT%0A%0A` +
+                        `Karyawan dalam kondisi prima. Terima kasih.`;
+            }
+
+            // 3. Buka WhatsApp otomatis setelah data terkirim
+            window.open(`https://wa.me/6282239689985?text=${pesan}`, '_blank');
+        });
+    </script>
+</body>
+</html>
