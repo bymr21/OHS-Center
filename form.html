@@ -13,86 +13,163 @@
 <body class="bg-slate-50 min-h-screen py-8">
 
     <main class="max-w-xl w-full mx-auto p-4">
-        <!-- Header dengan Logo (Menggunakan logo.png) -->
-        <div class="bg-white p-6 rounded-t-2xl shadow-sm border-b border-slate-200 text-center">
-            <img src="logo.png" alt="Logo OHS" class="mx-auto w-20 h-20 mb-4 rounded-full border-4 border-blue-600 object-cover shadow-sm">
-            <h1 class="text-2xl font-bold text-slate-800">Fit to Work Assessment</h1>
-            <p class="text-sm text-slate-500 mt-1">OHS Center - Safety & Health Monitoring</p>
+        <!-- Header dengan Logo & Tulisan Berjejer ke Samping -->
+        <div class="bg-white p-6 rounded-t-2xl shadow-sm border-b border-slate-200 flex items-center space-x-4">
+            <img src="logo.png" alt="Logo OHS" class="w-16 h-16 rounded-full border-2 border-blue-600 object-cover shadow-sm flex-shrink-0">
+            <div>
+                <h1 class="text-xl font-bold text-slate-800 leading-tight">Fit to Work Assessment</h1>
+                <p class="text-xs text-slate-500 mt-0.5">OHS Center - Safety & Health Monitoring</p>
+            </div>
         </div>
 
-        <!-- Form -->
+        <!-- Form Lengkap Sesuai Referensi Gambar -->
         <form id="ohsForm" class="bg-white p-6 rounded-b-2xl shadow-lg border border-slate-200 space-y-6">
             
-            <!-- Data Diri -->
+            <!-- 1. Nama Karyawan -->
             <div>
-                <label class="block text-sm font-bold text-slate-700 mb-2">Nama Karyawan *</label>
-                <input type="text" id="nama" required placeholder="Masukkan nama lengkap" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
-            </div>
-            <div>
-                <label class="block text-sm font-bold text-slate-700 mb-2">NIK *</label>
-                <input type="text" id="nik" required placeholder="Masukkan NIK" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <label class="block text-sm font-bold text-slate-700 mb-1">NAMA KARYAWAN *</label>
+                <p class="text-xs text-slate-500 italic mb-2">Tuliskan nama lengkap Anda.</p>
+                <input type="text" id="nama" required placeholder="Jawaban Anda" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
 
-            <!-- Pertanyaan 1: Durasi Tidur -->
+            <!-- 2. Nomor HP / WhatsApp -->
             <div>
-                <label class="block text-sm font-bold text-slate-700 mb-2">Berapa jam total waktu tidur Anda? *</label>
+                <label class="block text-sm font-bold text-slate-700 mb-1">NOMOR HP / WHATSAPP *</label>
+                <p class="text-xs text-slate-500 italic mb-2">Masukkan nomor WhatsApp aktif yang bisa dihubungi untuk keperluan koordinasi kesehatan (Contoh: 081234567890).</p>
+                <input type="tel" id="nohp" required placeholder="Jawaban Anda" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+
+            <!-- 3. Jadwal Kerja -->
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-1">JADWAL KERJA *</label>
+                <p class="text-xs text-slate-500 italic mb-2">Klik pada salah satu lingkaran yang sesuai dengan jadwal kerja Anda hari ini.</p>
                 <div class="space-y-2">
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="< 5 JAM" required class="mr-3"> < 5 JAM</label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="jadwalkerja" value="NON SHIFT" required class="mr-3"> NON SHIFT</label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="jadwalkerja" value="SHIFT PAGI" class="mr-3"> SHIFT PAGI</label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="jadwalkerja" value="SHIFT MALAM" class="mr-3"> SHIFT MALAM</label>
+                </div>
+            </div>
+
+            <!-- 4. Section / Departemen -->
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-1">SECTION *</label>
+                <p class="text-xs text-slate-500 italic mb-2">Klik kotak di bawah, lalu cari dan pilih nama departemen tempat Anda bertugas.</p>
+                <select id="section" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
+                    <option value="" disabled selected>Pilih</option>
+                    <option value="HSE">HSE</option>
+                    <option value="Production">Production</option>
+                    <option value="Maintenance">Maintenance</option>
+                    <option value="Plant">Plant</option>
+                    <option value="HR & GA">HR & GA</option>
+                    <option value="Logistics/SCM">Logistics / SCM</option>
+                </select>
+            </div>
+
+            <!-- 5. Kategori Golongan -->
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-1">KATEGORI GOLONGAN *</label>
+                <p class="text-xs text-slate-500 italic mb-2">Pilih kategori atau level jabatan Anda saat ini pada daftar dibawah.</p>
+                <div class="space-y-2">
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="GENERAL MANAGER" required class="mr-3"> GENERAL MANAGER</label>
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="MANAGER" class="mr-3"> MANAGER</label>
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="SUPERINTENDENT" class="mr-3"> SUPERINTENDENT</label>
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="SUPERVISOR" class="mr-3"> SUPERVISOR</label>
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="FOREMAN" class="mr-3"> FOREMAN</label>
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="JR. OFFICER" class="mr-3"> JR. OFFICER</label>
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="CREW" class="mr-3"> CREW</label>
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="HELPER" class="mr-3"> HELPER</label>
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="THL" class="mr-3"> THL</label>
+                </div>
+            </div>
+
+            <!-- 6. Area Kerja -->
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-1">AREA KERJA *</label>
+                <p class="text-xs text-slate-500 italic mb-2">Pilih salah satu lokasi yang menjadi tempat aktivitas kerja utama Anda hari ini.</p>
+                <div class="space-y-2">
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="areakerja" value="LAPANGAN" required class="mr-3"> LAPANGAN</label>
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="areakerja" value="OFFICE" class="mr-3"> OFFICE</label>
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="areakerja" value="LAPANGAN & OFFICE" class="mr-3"> LAPANGAN & OFFICE</label>
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="areakerja" value="Yang lain" class="mr-3"> Yang lain:</label>
+                </div>
+            </div>
+
+            <!-- 7. Waktu Tidur -->
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-1">Berapa jam total waktu tidur Anda sebelum mulai bekerja? *</label>
+                <p class="text-xs text-slate-500 italic mb-2">Pilih angka yang paling mendekati total jam tidur Anda tadi malam. <br><strong>Contoh:</strong> Jika Anda tidur jam <strong>10 malam</strong> dan bangun jam <strong>5 pagi</strong>, maka total tidur Anda adalah <strong>7 Jam</strong>.</p>
+                <div class="space-y-2">
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="< 5 JAM (KURANG DARI 5 JAM)" required class="mr-3"> < 5 JAM (KURANG DARI 5 JAM)</label>
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="5 JAM" class="mr-3"> 5 JAM</label>
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="6 JAM" class="mr-3"> 6 JAM</label>
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="7 JAM" class="mr-3"> 7 JAM atau lebih</label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="7 JAM" class="mr-3"> 7 JAM</label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="8 JAM" class="mr-3"> 8 JAM</label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="> 8 JAM (LEBIH DARI 8 JAM)" class="mr-3"> > 8 JAM (LEBIH DARI 8 JAM)</label>
                 </div>
             </div>
 
-            <!-- Pertanyaan 2: Kualitas Tidur -->
+            <!-- 8. Kualitas Tidur -->
             <div>
-                <label class="block text-sm font-bold text-slate-700 mb-2">Bagaimana kualitas istirahat Anda? *</label>
+                <label class="block text-sm font-bold text-slate-700 mb-1">Bagaimana kualitas istirahat/tidur Anda? *</label>
+                <p class="text-xs text-slate-500 italic mb-2">Pilih satu jawaban yang paling menggambarkan perasaan Anda saat bangun tidur tadi.</p>
                 <div class="space-y-2">
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="kualitastidur" value="Sangat Buruk" required class="mr-3"> Sangat Buruk</label>
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="kualitastidur" value="Buruk" class="mr-3"> Buruk</label>
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="kualitastidur" value="Cukup" class="mr-3"> Cukup</label>
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="kualitastidur" value="Baik" class="mr-3"> Baik</label>
+                    <label class="flex items-start p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="kualitastidur" value="SANGAT BURUK: TERBANGUN BERKALI-KALI, MERASA SANGAT LEMAS." required class="mt-1 mr-3"> <span><strong>SANGAT BURUK:</strong> TERBANGUN BERKALI-KALI, MERASA SANGAT LEMAS.</span></label>
+                    <label class="flex items-start p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="kualitastidur" value="BURUK: TIDUR NYENYAK, MASIH MERASA MENGANTUK." class="mt-1 mr-3"> <span><strong>BURUK:</strong> TIDUR NYENYAK, MASIH MERASA MENGANTUK.</span></label>
+                    <label class="flex items-start p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="kualitastidur" value="CUKUP: TIDUR STANDAR, KONDISI FISIK BIASA SAJA." class="mt-1 mr-3"> <span><strong>CUKUP:</strong> TIDUR STANDAR, KONDISI FISIK BIASA SAJA.</span></label>
+                    <label class="flex items-start p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="kualitastidur" value="BAIK: TIDUR NYENYAK, MERASA CUKUP SEGAR." class="mt-1 mr-3"> <span><strong>BAIK:</strong> TIDUR NYENYAK, MERASA CUKUP SEGAR.</span></label>
+                    <label class="flex items-start p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="kualitastidur" value="SANGAT BAIK: TIDUR SANGAT BERKUALITAS, MERASA SANGAT FIT & SIAP BEKERJA." class="mt-1 mr-3"> <span><strong>SANGAT BAIK:</strong> TIDUR SANGAT BERKUALITAS, MERASA SANGAT FIT & SIAP BEKERJA.</span></label>
                 </div>
             </div>
 
-            <!-- Pertanyaan 3: Gejala -->
+            <!-- 9. Gejala Kesehatan -->
             <div>
-                <label class="block text-sm font-bold text-slate-700 mb-2">Gejala Kesehatan (Pilih yang sesuai) *</label>
+                <label class="block text-sm font-bold text-slate-700 mb-1">Apakah Anda merasakan gejala kesehatan berikut hari ini? *</label>
+                <p class="text-xs text-slate-500 italic mb-2">Centang pada gejala yang Anda rasakan, atau pilih 'TIDAK ADA GEJALA' jika Anda merasa sehat hari ini.</p>
                 <div class="space-y-2">
-                    <label class="flex items-center"><input type="checkbox" name="gejala" value="Sakit Kepala" class="mr-3"> Sakit Kepala / Pusing</label>
-                    <label class="flex items-center"><input type="checkbox" name="gejala" value="Batuk/Pilek" class="mr-3"> Batuk / Pilek / Sesak Nafas</label>
-                    <label class="flex items-center"><input type="checkbox" name="gejala" value="Sakit Perut" class="mr-3"> Sakit Perut / Mual / Diare</label>
-                    <label class="flex items-center"><input type="checkbox" name="gejala" value="Nyeri Otot" class="mr-3"> Nyeri Otot / Pegal Linu</label>
-                    <label class="flex items-center"><input type="checkbox" name="gejala" value="Pandangan Kabur" class="mr-3"> Pandangan Kabur</label>
-                    <label class="flex items-center"><input type="checkbox" name="gejala" value="Tidak Ada" checked class="mr-3"> Tidak Ada Gejala</label>
+                    <label class="flex items-center"><input type="checkbox" name="gejala" value="SAKIT KEPALA / PUSING" class="mr-3"> SAKIT KEPALA / PUSING</label>
+                    <label class="flex items-center"><input type="checkbox" name="gejala" value="BATUK / PILEK / SESAK NAFAS" class="mr-3"> BATUK / PILEK / SESAK NAFAS</label>
+                    <label class="flex items-center"><input type="checkbox" name="gejala" value="SAKIT PERUT / MUAL / DIARE" class="mr-3"> SAKIT PERUT / MUAL / DIARE</label>
+                    <label class="flex items-center"><input type="checkbox" name="gejala" value="NYERI OTOT / PEGAL LINU" class="mr-3"> NYERI OTOT / PEGAL LINU</label>
+                    <label class="flex items-center"><input type="checkbox" name="gejala" value="PANDANGAN KABUR / BERKUNANG-KUNANG" class="mr-3"> PANDANGAN KABUR / BERKUNANG-KUNANG</label>
+                    <label class="flex items-center"><input type="checkbox" name="gejala" value="TIDAK ADA GEJALA" checked class="mr-3"> TIDAK ADA GEJALA</label>
                 </div>
             </div>
 
-            <!-- Pertanyaan 4: Fokus -->
+            <!-- 10. Kondisi Fokus & Pikiran -->
             <div>
-                <label class="block text-sm font-bold text-slate-700 mb-2">Bagaimana kondisi fokus Anda? *</label>
+                <label class="block text-sm font-bold text-slate-700 mb-1">KONDISI FOKUS & PIKIRAN *</label>
+                <p class="text-xs text-slate-500 italic mb-2">Kesehatan mental memengaruhi fokus dan keselamatan kerja Anda. Pilih kondisi yang paling menggambarkan perasaan Anda saat ini. Jika Anda merasa sangat terganggu/sulit fokus, sangat disarankan untuk berkonsultasi dengan pengawas/medik demi keamanan bersama.</p>
                 <div class="space-y-2">
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="fokus" value="Fokus & Tenang" required class="mr-3"> Fokus & Tenang</label>
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="fokus" value="Sedikit Terganggu" class="mr-3"> Sedikit Terganggu</label>
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="fokus" value="Sangat Terganggu" class="mr-3"> Sangat Terganggu</label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="fokus" value="FOKUS & TENANG" required class="mr-3"> FOKUS & TENANG</label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="fokus" value="SEDIKIT TERGANGGU" class="mr-3"> SEDIKIT TERGANGGU</label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="fokus" value="SANGAT TERGANGGU" class="mr-3"> SANGAT TERGANGGU</label>
                 </div>
             </div>
 
-            <!-- Pertanyaan 5: Obat -->
+            <!-- 11. Konsumsi Obat -->
             <div>
-                <label class="block text-sm font-bold text-slate-700 mb-2">Konsumsi obat (12 jam terakhir)? *</label>
+                <label class="block text-sm font-bold text-slate-700 mb-1">Apakah Anda sedang mengonsumsi obat-obatan dalam 12 jam terakhir? (Obat flu, batuk, atau obat yang menyebabkan kantuk) *</label>
+                <p class="text-xs text-slate-500 italic mb-2">Pilih 'YA' jika Anda minum obat flu, batuk, atau obat lain yang bisa menyebabkan kantuk dalam 12 jam terakhir.</p>
                 <div class="flex gap-4">
                     <label class="flex items-center"><input type="radio" name="obat" value="YA" required class="mr-2"> YA</label>
                     <label class="flex items-center"><input type="radio" name="obat" value="TIDAK" class="mr-2"> TIDAK</label>
                 </div>
             </div>
 
-            <!-- Pertanyaan 6: Kesiapan -->
+            <!-- 12. Kesiapan Bekerja -->
             <div>
-                <label class="block text-sm font-bold text-slate-700 mb-2">Kesiapan Bekerja *</label>
+                <label class="block text-sm font-bold text-slate-700 mb-1">Berdasarkan kondisi di atas, bagaimana kesiapan Anda untuk bekerja sekarang? *</label>
+                <div class="text-xs text-slate-500 italic mb-3 bg-amber-50 p-3 rounded-lg border border-amber-200">
+                    Jika Anda merasa <strong>TIDAK FIT</strong> atau memilih <strong>'Sangat Terganggu'</strong> pada poin pikiran, Anda <strong>WAJIB</strong> segera:
+                    <ol class="list-decimal list-inside mt-1 space-y-1">
+                        <li>Lapor ke Pengawas/Foreman.</li>
+                        <li>Kunjungi klinik site untuk observasi.</li>
+                        <li>Jangan mengoperasikan unit/kendaraan sebelum ada instruksi lebih lanjut.</li>
+                    </ol>
+                </div>
                 <div class="space-y-2">
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-blue-50"><input type="radio" name="kesiapan" value="SIAP & FIT" required class="mr-3"> YA, SAYA SIAP & FIT</label>
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-red-50"><input type="radio" name="kesiapan" value="TIDAK FIT" class="mr-3"> TIDAK, SAYA KURANG SEHAT</label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-blue-50"><input type="radio" name="kesiapan" value="YA, SAYA SIAP & FIT UNTUK BEKERJA" required class="mr-3"> YA, SAYA SIAP & FIT UNTUK BEKERJA</label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-red-50"><input type="radio" name="kesiapan" value="TIDAK, SAYA MERASA TIDAK FIT/KURANG SEHAT" class="mr-3"> TIDAK, SAYA MERASA TIDAK FIT/KURANG SEHAT</label>
                 </div>
             </div>
 
@@ -113,7 +190,11 @@
             e.preventDefault();
             
             const nama = document.getElementById('nama').value;
-            const nik = document.getElementById('nik').value;
+            const nohp = document.getElementById('nohp').value;
+            const jadwal = document.querySelector('input[name="jadwalkerja"]:checked').value;
+            const section = document.getElementById('section').value;
+            const golongan = document.querySelector('input[name="golongan"]:checked').value;
+            const areakerja = document.querySelector('input[name="areakerja"]:checked').value;
             const tidur = document.querySelector('input[name="waktutidur"]:checked').value;
             const kualitas = document.querySelector('input[name="kualitastidur"]:checked').value;
             const gejala = Array.from(document.querySelectorAll('input[name="gejala"]:checked')).map(el => el.value);
@@ -121,40 +202,41 @@
             const obat = document.querySelector('input[name="obat"]:checked').value;
             const kesiapan = document.querySelector('input[name="kesiapan"]:checked').value;
 
-            // Logika Deteksi Danger sesuai permintaan
+            // Logika Deteksi Danger
             const isDanger = (
-                tidur === "< 5 JAM" || tidur === "5 JAM" ||
-                kualitas === "Sangat Buruk" || kualitas === "Buruk" ||
-                gejala.some(g => g !== "Tidak Ada") ||
-                fokus === "Sedikit Terganggu" || fokus === "Sangat Terganggu" ||
+                tidur.includes("< 5 JAM") ||
+                kualitas.includes("SANGAT BURUK") || kualitas.includes("BURUK:") ||
+                gejala.some(g => g !== "TIDAK ADA GEJALA") ||
+                fokus === "SEDIKIT TERGANGGU" || fokus === "SANGAT TERGANGGU" ||
                 obat === "YA" ||
-                kesiapan === "TIDAK FIT"
+                kesiapan.includes("TIDAK")
             );
 
             let pesan = "";
             if (isDanger) {
                 pesan = `🚨 *URGENT* 🚨%0A` +
-                        `*LAPORAN FIT TO WORK - TIDAK AMAN*%0A%0A` +
+                        `*LAPORAN FIT TO WORK*%0A%0A` +
                         `Yth. Admin OHS,%0A` +
                         `Mohon perhatian, sistem mendeteksi potensi risiko kesehatan/fokus:%0A%0A` +
                         `*Nama:* ${nama}%0A` +
-                        `*NIK:* ${nik}%0A` +
+                        `*No HP:* ${nohp}%0A` +
+                        `*Jadwal:* ${jadwal}%0A` +
+                        `*Section:* ${section}%0A` +
+                        `*Golongan:* ${golongan}%0A` +
+                        `*Area Kerja:* ${areakerja}%0A` +
+                        `*Tidur:* ${tidur}%0A` +
+                        `*Kualitas Tidur:* ${kualitas}%0A` +
+                        `*Gejala:* ${gejala.join(', ')}%0A` +
+                        `*Fokus:* ${fokus}%0A` +
+                        `*Konsumsi Obat:* ${obat}%0A` +
                         `*Status:* ⚠️ TIDAK FIT / DANGER%0A%0A` +
                         `Mohon segera lakukan observasi/tindak lanjut kepada karyawan tersebut. Terima kasih.`;
             } else {
-                pesan = `✅ *LAPORAN FIT TO WORK - AMAN*✅%0A%0A` +
+                pesan = `✅ *LAPORAN FIT TO WORK - AMAN*%0A%0A` +
                         `Yth. Admin OHS,%0A` +
                         `Berikut laporan harian Fit to Work:%0A%0A` +
                         `*Nama:* ${nama}%0A` +
-                        `*NIK:* ${nik}%0A` +
-                        `*Status:* SIAP & FIT%0A%0A` +
-                        `Karyawan dalam kondisi prima. Terima kasih.`;
-            }
-
-            // Membuka WhatsApp otomatis dengan format pesan
-            window.open(`https://wa.me/6282239689985?text=${pesan}`, '_blank');
-        });
-    </script>
-</body>
-</html>
-
+                        `*No HP:* ${nohp}%0A` +
+                        `*Jadwal:* ${jadwal}%0A` +
+                        `*Section:* ${section}%0A` +
+                        `*Golongan:* ${golo
