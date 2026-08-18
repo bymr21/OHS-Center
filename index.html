@@ -3,39 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OHS Center - Safety Management System</title>
+    <title>Portal OHS Center</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-900 text-white min-h-screen flex flex-col justify-between">
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
 
-    <main class="max-w-md w-full mx-auto px-6 py-12 text-center">
-        <!-- Logo dan Identitas -->
-        <div class="flex flex-col items-center mb-6">
-            <img src="logo.png" alt="Logo OHS Center" class="w-32 h-32 mb-4 rounded-full border-4 border-blue-500 shadow-lg object-cover">
-            <span class="inline-block bg-blue-600/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">
-                Safety Management System
-            </span>
-            <h1 class="text-4xl sm:text-5xl font-black tracking-tight text-white">
-                OHS Center
-            </h1>
+    <div class="max-w-md w-full bg-white rounded-3xl shadow-xl border border-slate-200 p-8 text-center space-y-6">
+        
+        <!-- Header / Logo -->
+        <div>
+            <h1 class="text-xl font-bold text-slate-800">Portal OHS Center</h1>
+            <p class="text-xs text-slate-500 mt-1">Silakan pilih menu layanan di bawah ini</p>
         </div>
 
-        <p class="text-xl sm:text-2xl font-bold text-yellow-400 mb-6">
-            Selamat Datang 😃
-        </p>
+        <!-- Menu Grid ala HP (2 Kolom) -->
+        <div class="grid grid-cols-2 gap-4 pt-2">
+            
+            <!-- Menu 1: Fit to Work -->
+            <a href="fit-to-work.html" class="flex flex-col items-center justify-center p-5 bg-blue-50 hover:bg-blue-100 border border-blue-100 rounded-2xl transition group shadow-sm">
+                <div class="w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-md group-hover:scale-105 transition">
+                    📋
+                </div>
+                <span class="text-xs font-bold text-slate-700 mt-3 text-center leading-tight">Fit to Work Assessment</span>
+            </a>
 
-        <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
-            Pusat pelaporan dan pemantauan keselamatan kerja yang cepat, transparan, dan terintegrasi langsung untuk menciptakan lingkungan kerja yang aman.
-        </p>
+            <!-- Menu 2: Permit to Work -->
+            <a href="ptw.html" class="flex flex-col items-center justify-center p-5 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-2xl transition group shadow-sm">
+                <div class="w-14 h-14 bg-slate-800 text-white rounded-2xl flex items-center justify-center text-2xl shadow-md group-hover:scale-105 transition">
+                    🛠️
+                </div>
+                <span class="text-xs font-bold text-slate-700 mt-3 text-center leading-tight">Request Permit to Work (PTW)</span>
+            </a>
 
-        <a href="form.html" class="w-full inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition duration-200 shadow-md">
-            Masuk ke Formulir Laporan &rarr;
-        </a>
-    </main>
+        </div>
 
-    <footer class="text-center py-6 text-xs text-slate-500">
-        &copy; 2026 OHS Center by mr. All Rights Reserved.
-    </footer>
+        <!-- Footer Note -->
+        <div class="text-[11px] text-slate-400 pt-4 border-t border-slate-100">
+            Safety & Health Monitoring System
+        </div>
+
+    </div>
 
 </body>
 </html>
