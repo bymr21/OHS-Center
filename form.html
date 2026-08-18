@@ -319,27 +319,20 @@
                     document.getElementById('resultModal').classList.remove('hidden');
                 } else {
                     // WhatsApp: Rinci lengkap tanpa nomor urut
-                    let pesan = `Halo Tim OHS Center, mohon izin melaporkan hasil asesmen kesehatan harian saya secara rinci:%0A%0A` +
-                                `🚨 *FIT TO WORK - TIDAK FIT* 🚨%0A%0A` +
-                                `• *Nama Karyawan:* ${encodeURIComponent(nama)}%0A` +
-                                `• *Nomor Induk Karyawan (NIK):* ${encodeURIComponent(nik)}%0A` +
-                                `• *Nomor HP / WhatsApp:* ${encodeURIComponent(nohp)}%0A` +
-                                `• *Jadwal Kerja:* ${encodeURIComponent(jadwal)}%0A` +
-                                `• *Section:* ${encodeURIComponent(section)}%0A` +
-                                `• *Kategori Golongan:* ${encodeURIComponent(golongan)}%0A` +
-                                `• *Area Kerja:* ${encodeURIComponent(areakerja)}%0A` +
-                                `• *Waktu Tidur:* ${encodeURIComponent(tidur)}%0A` +
-                                `• *Kualitas Tidur:* ${encodeURIComponent(kualitas)}%0A` +
-                                `• *Gejala Kesehatan:* ${encodeURIComponent(gejala)}%0A` +
-                                `• *Kondisi Fokus & Pikiran:* ${encodeURIComponent(fokus)}%0A` +
-                                `• *Konsumsi Obat (12 Jam Terakhir):* ${encodeURIComponent(obatChoice)}%0A` +
-                                `• *Jenis/Nama Obat:* ${encodeURIComponent(jenisObatText)}%0A` +
-                                `• *Kesiapan Bekerja:* ${encodeURIComponent(kesiapan)}%0A%0A` +
-                                `*Status Akhir:* TIDAK FIT%0A%0A` +
-                                `Mohon arahan dan tindak lanjut lebih lanjut. Terima kasih.`;
+                    let pesan = `Halo Tim OHS, berikut laporan Fit to Work:%0A%0A` +
+            `🚨 *STATUS: TIDAK FIT* 🚨%0A%0A` +
+            `👤 *Profil:* ${encodeURIComponent(nama)} / ${encodeURIComponent(nik)}%0A` +
+            `🕒 *Jadwal:* ${encodeURIComponent(jadwal)}%0A` +
+            `📍 *Section/Area:* ${encodeURIComponent(section)} - ${encodeURIComponent(areakerja)}%0A` +
+            `🛌 *Istirahat:* ${encodeURIComponent(tidur)} (${encodeURIComponent(kualitas)})%0A` +
+            `💊 *Obat:* ${encodeURIComponent(obatChoice)} (${encodeURIComponent(jenisObatText)})%0A` +
+            `⚠️ *Gejala:* ${encodeURIComponent(gejala)}%0A` +
+            `🧠 *Fokus:* ${encodeURIComponent(fokus)}%0A` +
+            `📝 *Kesiapan:* ${encodeURIComponent(kesiapan)}%0A%0A` +
+            `Mohon arahan tindak lanjut. Terima kasih.`;
 
-                    const nomorAdmin = "6282239689985";
-                    window.location.href = `https://wa.me/${nomorAdmin}?text=${pesan}`;
+const nomorAdmin = "6282239689985";
+window.location.href = `https://wa.me/${nomorAdmin}?text=${pesan}`;
                 }
             }).catch((error) => {
                 console.error('Error:', error);
