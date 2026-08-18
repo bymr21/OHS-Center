@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fit to Work Assessment - OHS Center</title>
-    <!-- Menggunakan Tailwind CSS untuk desain modern dan responsif -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @page { size: A4; margin: 15mm 12mm; background-color: #f8fafc; }
+        body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    </style>
 </head>
-<body class="bg-slate-100 min-h-screen py-8">
+<body class="bg-slate-50 min-h-screen py-8">
 
     <main class="max-w-xl w-full mx-auto p-4">
-        <!-- Header -->
+        <!-- Header dengan Logo (Menggunakan logo.png) -->
         <div class="bg-white p-6 rounded-t-2xl shadow-sm border-b border-slate-200 text-center">
+            <img src="logo.png" alt="Logo OHS" class="mx-auto w-20 h-20 mb-4 rounded-full border-4 border-blue-600 object-cover shadow-sm">
             <h1 class="text-2xl font-bold text-slate-800">Fit to Work Assessment</h1>
             <p class="text-sm text-slate-500 mt-1">OHS Center - Safety & Health Monitoring</p>
         </div>
@@ -32,7 +36,7 @@
             <!-- Pertanyaan 1: Durasi Tidur -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-2">Berapa jam total waktu tidur Anda? *</label>
-                <div class="grid grid-cols-1 gap-2">
+                <div class="space-y-2">
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="< 5 JAM" required class="mr-3"> < 5 JAM</label>
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="5 JAM" class="mr-3"> 5 JAM</label>
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="6 JAM" class="mr-3"> 6 JAM</label>
@@ -43,7 +47,7 @@
             <!-- Pertanyaan 2: Kualitas Tidur -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-2">Bagaimana kualitas istirahat Anda? *</label>
-                <div class="grid grid-cols-1 gap-2">
+                <div class="space-y-2">
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="kualitastidur" value="Sangat Buruk" required class="mr-3"> Sangat Buruk</label>
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="kualitastidur" value="Buruk" class="mr-3"> Buruk</label>
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="kualitastidur" value="Cukup" class="mr-3"> Cukup</label>
@@ -67,7 +71,7 @@
             <!-- Pertanyaan 4: Fokus -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-2">Bagaimana kondisi fokus Anda? *</label>
-                <div class="grid grid-cols-1 gap-2">
+                <div class="space-y-2">
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="fokus" value="Fokus & Tenang" required class="mr-3"> Fokus & Tenang</label>
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="fokus" value="Sedikit Terganggu" class="mr-3"> Sedikit Terganggu</label>
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="fokus" value="Sangat Terganggu" class="mr-3"> Sangat Terganggu</label>
@@ -92,9 +96,15 @@
                 </div>
             </div>
 
-            <button type="submit" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition transform active:scale-95 shadow-md">
-                Kirim Laporan Ke Admin
-            </button>
+            <!-- Tombol Navigasi -->
+            <div class="flex gap-4 pt-4">
+                <button type="button" onclick="history.back()" class="flex-1 bg-slate-200 text-slate-700 font-bold py-4 rounded-xl hover:bg-slate-300 transition">
+                    Kembali
+                </button>
+                <button type="submit" class="flex-2 bg-blue-600 text-white font-bold py-4 px-8 rounded-xl hover:bg-blue-700 transition shadow-md">
+                    Kirim Laporan
+                </button>
+            </div>
         </form>
     </main>
 
@@ -102,7 +112,6 @@
         document.getElementById('ohsForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Ambil data
             const nama = document.getElementById('nama').value;
             const nik = document.getElementById('nik').value;
             const tidur = document.querySelector('input[name="waktutidur"]:checked').value;
@@ -112,20 +121,20 @@
             const obat = document.querySelector('input[name="obat"]:checked').value;
             const kesiapan = document.querySelector('input[name="kesiapan"]:checked').value;
 
-            // Logika Deteksi Danger
+            // Logika Deteksi Danger sesuai permintaan
             const isDanger = (
                 tidur === "< 5 JAM" || tidur === "5 JAM" ||
                 kualitas === "Sangat Buruk" || kualitas === "Buruk" ||
                 gejala.some(g => g !== "Tidak Ada") ||
-                fokus !== "Fokus & Tenang" ||
+                fokus === "Sedikit Terganggu" || fokus === "Sangat Terganggu" ||
                 obat === "YA" ||
                 kesiapan === "TIDAK FIT"
             );
 
-            // Format Pesan
             let pesan = "";
             if (isDanger) {
-                pesan = `🚨 *URGENT: LAPORAN FIT TO WORK - TIDAK AMAN* 🚨%0A%0A` +
+                pesan = `🚨 *URGENT* 🚨%0A` +
+                        `*LAPORAN FIT TO WORK - TIDAK AMAN*%0A%0A` +
                         `Yth. Admin OHS,%0A` +
                         `Mohon perhatian, sistem mendeteksi potensi risiko kesehatan/fokus:%0A%0A` +
                         `*Nama:* ${nama}%0A` +
@@ -133,7 +142,7 @@
                         `*Status:* ⚠️ TIDAK FIT / DANGER%0A%0A` +
                         `Mohon segera lakukan observasi/tindak lanjut kepada karyawan tersebut. Terima kasih.`;
             } else {
-                pesan = `✅ *LAPORAN FIT TO WORK - AMAN*%0A%0A` +
+                pesan = `✅ *LAPORAN FIT TO WORK - AMAN*✅%0A%0A` +
                         `Yth. Admin OHS,%0A` +
                         `Berikut laporan harian Fit to Work:%0A%0A` +
                         `*Nama:* ${nama}%0A` +
@@ -142,9 +151,10 @@
                         `Karyawan dalam kondisi prima. Terima kasih.`;
             }
 
-            // Arahkan ke WhatsApp
+            // Membuka WhatsApp otomatis dengan format pesan
             window.open(`https://wa.me/6282239689985?text=${pesan}`, '_blank');
         });
     </script>
 </body>
 </html>
+
