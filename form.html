@@ -8,14 +8,23 @@
     <style>
         @page { size: A4; margin: 15mm 12mm; background-color: #f8fafc; }
         body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        .logo-placeholder { 
+            width: 64px; height: 64px; 
+            background: #e2e8f0; 
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 8px; border: 2px dashed #94a3b8;
+            font-size: 10px; color: #64748b; text-align: center;
+            flex-shrink: 0;
+        }
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen py-8">
 
     <main class="max-w-xl w-full mx-auto p-4">
-        <!-- Header -->
+        <!-- Header & Logo -->
         <div class="bg-white p-6 rounded-t-2xl shadow-sm border-b border-slate-200 flex items-center space-x-4">
-            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold border-2 border-blue-600 shadow-sm flex-shrink-0">Logo</div>
+            <img src="logo.png" alt="Company Logo" class="w-16 h-16 object-contain rounded-lg border border-slate-200 flex-shrink-0" onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='flex'">
+            <div id="logoFallback" class="logo-placeholder" style="display:none;">Logo<br>Perusahaan</div>
             <div>
                 <h1 class="text-xl font-bold text-slate-800 leading-tight">Fit to Work Assessment</h1>
                 <p class="text-xs text-slate-500 mt-0.5">OHS Center - Safety & Health Monitoring</p>
@@ -55,7 +64,7 @@
                 <label class="block text-sm font-bold text-slate-700 mb-1">SECTION *</label>
                 <p class="text-xs text-slate-500 italic mb-2">Klik kotak di bawah, lalu cari dan pilih nama departemen tempat Anda bertugas.</p>
                 <select id="section" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
-                    <option value="" disabled selected>Pilih</option>
+                    <option value="" disabled selected>Pilih Section...</option>
                     <option value="GENERAL MANAGER">GENERAL MANAGER</option>
                     <option value="MANAGER">MANAGER</option>
                     <option value="PRODUCTION">PRODUCTION</option>
@@ -91,16 +100,16 @@
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">KATEGORI GOLONGAN *</label>
                 <p class="text-xs text-slate-500 italic mb-2">Pilih kategori atau level jabatan Anda saat ini pada daftar dibawah.</p>
-                <div class="space-y-2">
-                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="GENERAL MANAGER" required class="mr-3"> GENERAL MANAGER</label>
-                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="MANAGER" class="mr-3"> MANAGER</label>
-                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="SUPERINTENDENT" class="mr-3"> SUPERINTENDENT</label>
-                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="SUPERVISOR" class="mr-3"> SUPERVISOR</label>
-                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="FOREMAN" class="mr-3"> FOREMAN</label>
-                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="JR. OFFICER" class="mr-3"> JR. OFFICER</label>
-                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="CREW" class="mr-3"> CREW</label>
-                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="HELPER" class="mr-3"> HELPER</label>
-                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="THL" class="mr-3"> THL</label>
+                <div class="grid grid-cols-2 gap-2">
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="GENERAL MANAGER" required class="mr-2"> GENERAL MANAGER</label>
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="MANAGER" class="mr-2"> MANAGER</label>
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="SUPERINTENDENT" class="mr-2"> SUPERINTENDENT</label>
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="SUPERVISOR" class="mr-2"> SUPERVISOR</label>
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="FOREMAN" class="mr-2"> FOREMAN</label>
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="JR. OFFICER" class="mr-2"> JR. OFFICER</label>
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="CREW" class="mr-2"> CREW</label>
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="HELPER" class="mr-2"> HELPER</label>
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="THL" class="mr-2"> THL</label>
                 </div>
             </div>
 
@@ -121,12 +130,12 @@
                 <label class="block text-sm font-bold text-slate-700 mb-1">Berapa jam total waktu tidur Anda sebelum mulai bekerja? *</label>
                 <p class="text-xs text-slate-500 italic mb-2">Pilih angka yang paling mendekati total jam tidur Anda tadi malam. <br><strong>Contoh:</strong> Jika Anda tidur jam <strong>10 malam</strong> dan bangun jam <strong>5 pagi</strong>, maka total tidur Anda adalah <strong>7 Jam</strong>.</p>
                 <div class="space-y-2">
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="< 5 JAM (KURANG DARI 5 JAM)" required class="mr-3"> < 5 JAM (KURANG DARI 5 JAM)</label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="< 5 JAM (KURANG DARI 5 JAM)" required class="mr-3"> &lt; 5 JAM (KURANG DARI 5 JAM)</label>
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="5 JAM" class="mr-3"> 5 JAM</label>
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="6 JAM" class="mr-3"> 6 JAM</label>
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="7 JAM" class="mr-3"> 7 JAM</label>
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="8 JAM" class="mr-3"> 8 JAM</label>
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="> 8 JAM (LEBIH DARI 8 JAM)" class="mr-3"> > 8 JAM (LEBIH DARI 8 JAM)</label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="> 8 JAM (LEBIH DARI 8 JAM)" class="mr-3"> &gt; 8 JAM (LEBIH DARI 8 JAM)</label>
                 </div>
             </div>
 
@@ -172,9 +181,14 @@
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">Apakah Anda sedang mengonsumsi obat-obatan dalam 12 jam terakhir? (Obat flu, batuk, atau obat yang menyebabkan kantuk) *</label>
                 <p class="text-xs text-slate-500 italic mb-2">Pilih 'YA' jika Anda minum obat flu, batuk, atau obat lain yang bisa menyebabkan kantuk dalam 12 jam terakhir.</p>
-                <div class="flex gap-4">
-                    <label class="flex items-center"><input type="radio" name="obat" value="YA" required class="mr-2"> YA</label>
-                    <label class="flex items-center"><input type="radio" name="obat" value="TIDAK" class="mr-2"> TIDAK</label>
+                <div class="space-y-3">
+                    <div class="flex gap-4">
+                        <label class="flex items-center cursor-pointer"><input type="radio" name="obat" value="YA" required class="mr-2" onclick="document.getElementById('detailObatContainer').style.display='block'"> YA</label>
+                        <label class="flex items-center cursor-pointer"><input type="radio" name="obat" value="TIDAK" class="mr-2" onclick="document.getElementById('detailObatContainer').style.display='none'; document.getElementById('namaobat').value=''"> TIDAK</label>
+                    </div>
+                    <div id="detailObatContainer" style="display: none;" class="mt-2">
+                        <input type="text" id="namaobat" name="namaobat" placeholder="Tuliskan nama obat yang dikonsumsi..." class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm">
+                    </div>
                 </div>
             </div>
 
@@ -218,8 +232,15 @@
             const kualitas = document.querySelector('input[name="kualitastidur"]:checked').value;
             const gejala = Array.from(document.querySelectorAll('input[name="gejala"]:checked')).map(el => el.value).join(', ');
             const fokus = document.querySelector('input[name="fokus"]:checked').value;
-            const obat = document.querySelector('input[name="obat"]:checked').value;
+            const obatVal = document.querySelector('input[name="obat"]:checked').value;
+            const namaobat = document.getElementById('namaobat').value.trim();
             const kesiapan = document.querySelector('input[name="kesiapan"]:checked').value;
+
+            // Format status konsumsi obat dengan detail jika ada
+            let statusObat = obatVal;
+            if(obatVal === 'YA' && namaobat) {
+                statusObat = `YA (${namaobat})`;
+            }
 
             // Logika Deteksi
             const isDanger = (
@@ -227,8 +248,8 @@
                 kualitas.includes("SANGAT BURUK") || kualitas.includes("BURUK") ||
                 gejala !== "TIDAK ADA GEJALA" ||
                 fokus !== "FOKUS & TENANG" ||
-                obat === "YA" ||
-                kesiapan.includ("TIDAK")
+                obatVal === "YA" ||
+                kesiapan.includes("TIDAK")
             );
 
             // Tentukan status
@@ -240,37 +261,37 @@
                 pesan = `🚨 *FIT TO WORK - TIDAK FIT* 🚨%0A%0A` +
                         `Yth. Admin OHS,%0A` +
                         `Mohon perhatian, sistem mendeteksi potensi risiko kesehatan/fokus:%0A%0A` +
-                        `*Nama:* ${nama}%0A` +
-                        `*No HP:* ${nohp}%0A` +
-                        `*Jadwal:* ${jadwal}%0A` +
-                        `*Section:* ${section}%0A` +
-                        `*Golongan:* ${golongan}%0A` +
-                        `*Area Kerja:* ${areakerja}%0A` +
-                        `*Waktu Tidur:* ${tidur}%0A` +
-                        `*Kualitas Tidur:* ${kualitas}%0A` +
-                        `*Gejala:* ${gejala}%0A` +
-                        `*Fokus & Pikiran:* ${fokus}%0A` +
-                        `*Konsumsi Obat:* ${obat}%0A` +
-                        `*Kesiapan:* ${kesiapan}%0A` +
-                        `*Status:* ${status}`;
+                        `*Nama:* ${encodeURIComponent(nama)}%0A` +
+                        `*No HP:* ${encodeURIComponent(nohp)}%0A` +
+                        `*Jadwal:* ${encodeURIComponent(jadwal)}%0A` +
+                        `*Section:* ${encodeURIComponent(section)}%0A` +
+                        `*Golongan:* ${encodeURIComponent(golongan)}%0A` +
+                        `*Area Kerja:* ${encodeURIComponent(areakerja)}%0A` +
+                        `*Waktu Tidur:* ${encodeURIComponent(tidur)}%0A` +
+                        `*Kualitas Tidur:* ${encodeURIComponent(kualitas)}%0A` +
+                        `*Gejala:* ${encodeURIComponent(gejala)}%0A` +
+                        `*Fokus & Pikiran:* ${encodeURIComponent(fokus)}%0A` +
+                        `*Konsumsi Obat:* ${encodeURIComponent(statusObat)}%0A` +
+                        `*Kesiapan:* ${encodeURIComponent(kesiapan)}%0A` +
+                        `*Status:* ${encodeURIComponent(status)}`;
             } else {
                 pesan = `✅ *FIT TO WORK - FIT* ✅%0A%0A` +
-                        `*Nama:* ${nama}%0A` +
-                        `*No HP:* ${nohp}%0A` +
-                        `*Jadwal:* ${jadwal}%0A` +
-                        `*Section:* ${section}%0A` +
-                        `*Golongan:* ${golongan}%0A` +
-                        `*Area Kerja:* ${areakerja}%0A` +
-                        `*Waktu Tidur:* ${tidur}%0A` +
-                        `*Kualitas Tidur:* ${kualitas}%0A` +
-                        `*Gejala:* ${gejala}%0A` +
-                        `*Fokus & Pikiran:* ${fokus}%0A` +
-                        `*Konsumsi Obat:* ${obat}%0A` +
-                        `*Kesiapan:* ${kesiapan}%0A` +
-                        `*Status:* ${status}`;
+                        `*Nama:* ${encodeURIComponent(nama)}%0A` +
+                        `*No HP:* ${encodeURIComponent(nohp)}%0A` +
+                        `*Jadwal:* ${encodeURIComponent(jadwal)}%0A` +
+                        `*Section:* ${encodeURIComponent(section)}%0A` +
+                        `*Golongan:* ${encodeURIComponent(golongan)}%0A` +
+                        `*Area Kerja:* ${encodeURIComponent(areakerja)}%0A` +
+                        `*Waktu Tidur:* ${encodeURIComponent(tidur)}%0A` +
+                        `*Kualitas Tidur:* ${encodeURIComponent(kualitas)}%0A` +
+                        `*Gejala:* ${encodeURIComponent(gejala)}%0A` +
+                        `*Fokus & Pikiran:* ${encodeURIComponent(fokus)}%0A` +
+                        `*Konsumsi Obat:* ${encodeURIComponent(statusObat)}%0A` +
+                        `*Kesiapan:* ${encodeURIComponent(kesiapan)}%0A` +
+                        `*Status:* ${encodeURIComponent(status)}`;
             }
 
-            // Nomor tujuan WhatsApp yang diperbarui
+            // Nomor tujuan WhatsApp
             const nomorAdmin = "6282239689985";
             window.location.href = `https://wa.me/${nomorAdmin}?text=${pesan}`;
         });
