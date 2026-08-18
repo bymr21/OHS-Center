@@ -28,6 +28,13 @@
                 <input type="text" id="nama" required placeholder="Jawaban Anda" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
             </div>
 
+            <!-- Nomor Induk Karyawan (NIK) -->
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-1">NOMOR INDUK KARYAWAN (NIK) *</label>
+                <p class="text-xs text-slate-500 mb-2">Tulis Nomor Induk Karyawan (NIK) anda sesuai yang tertera pada Mine Permit.</p>
+                <input type="text" id="nik" required placeholder="Jawaban Anda" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+            </div>
+
             <!-- Nomor HP / WhatsApp -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">NOMOR HP / WHATSAPP *</label>
@@ -219,6 +226,7 @@
             btn.disabled = true;
 
             const nama = document.getElementById('nama').value;
+            const nik = document.getElementById('nik').value;
             const nohp = document.getElementById('nohp').value;
             const jadwal = document.querySelector('input[name="jadwalkerja"]:checked').value;
             const section = document.getElementById('section').value;
@@ -254,6 +262,7 @@
             const payload = {
                 waktu: waktuSekarang,
                 nama: nama,
+                nik: nik,
                 nohp: nohp,
                 jadwal: jadwal,
                 section: section,
@@ -280,13 +289,14 @@
 
                 if (statusFinal === "FIT") {
                     // Jika FIT: Tampilkan modal pop-up, tidak membuka WhatsApp
-                    document.getElementById('modalText').innerText = `Terima kasih, ${nama}. Data Anda berhasil tersimpan di sistem dan kondisi Anda dinyatakan FIT.`;
+                    document.getElementById('modalText').innerText = `Terima kasih, ${nama} (NIK: ${nik}). Data Anda berhasil tersimpan di sistem dan kondisi Anda dinyatakan FIT.`;
                     document.getElementById('resultModal').classList.remove('hidden');
                 } else {
                     // Jika TIDAK FIT: Data masuk spreadsheet, lalu otomatis buka WhatsApp
                     let pesan = `Halo Tim OHS Center, mohon izin melaporkan hasil asesmen kesehatan harian saya.%0A%0A` +
                                 `🚨 *FIT TO WORK - TIDAK FIT* 🚨%0A%0A` +
                                 `*Nama:* ${encodeURIComponent(nama)}%0A` +
+                                `*NIK (Mine Permit):* ${encodeURIComponent(nik)}%0A` +
                                 `*No HP:* ${encodeURIComponent(nohp)}%0A` +
                                 `*Jadwal:* ${encodeURIComponent(jadwal)}%0A` +
                                 `*Section:* ${encodeURIComponent(section)}%0A` +
