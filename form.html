@@ -26,21 +26,28 @@
         <!-- FORM INPUT (Halaman 1) -->
         <form id="ohsForm" class="bg-white p-6 rounded-b-2xl shadow-lg border border-slate-200 space-y-6">
             
-            <!-- 1. Nama Karyawan -->
+            <!-- 1. Email (Opsional) -->
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-1">ALAMAT EMAIL</label>
+                <p class="text-xs text-slate-500 italic mb-2">Opsional (tidak wajib diisi).</p>
+                <input type="email" id="email" name="Email" placeholder="nama@email.com" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+
+            <!-- 2. Nama Karyawan (Wajib) -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">NAMA KARYAWAN *</label>
                 <p class="text-xs text-slate-500 italic mb-2">Tuliskan nama lengkap Anda.</p>
                 <input type="text" id="nama" name="Nama" required placeholder="Jawaban Anda" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
 
-            <!-- 2. Nomor HP / WhatsApp -->
+            <!-- 3. Nomor HP / WhatsApp (Wajib) -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">NOMOR HP / WHATSAPP *</label>
                 <p class="text-xs text-slate-500 italic mb-2">Masukkan nomor WhatsApp aktif yang bisa dihubungi (Contoh: 081234567890).</p>
                 <input type="tel" id="nohp" name="NoHP" required placeholder="Jawaban Anda" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
 
-            <!-- 3. Jadwal Kerja -->
+            <!-- 4. Jadwal Kerja (Wajib) -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">JADWAL KERJA *</label>
                 <p class="text-xs text-slate-500 italic mb-2">Klik pada salah satu lingkaran yang sesuai dengan jadwal kerja Anda hari ini.</p>
@@ -51,7 +58,7 @@
                 </div>
             </div>
 
-            <!-- 4. Section / Departemen Lengkap -->
+            <!-- 5. Section / Departemen Lengkap (Wajib) -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">SECTION *</label>
                 <p class="text-xs text-slate-500 italic mb-2">Klik kotak di bawah, lalu cari dan pilih nama departemen tempat Anda bertugas.</p>
@@ -88,7 +95,7 @@
                 </select>
             </div>
 
-            <!-- 5. Kategori Golongan -->
+            <!-- 6. Kategori Golongan (Wajib) -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">KATEGORI GOLONGAN *</label>
                 <p class="text-xs text-slate-500 italic mb-2">Pilih kategori atau level jabatan Anda saat ini.</p>
@@ -105,7 +112,7 @@
                 </div>
             </div>
 
-            <!-- 6. Area Kerja -->
+            <!-- 7. Area Kerja (Wajib) -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">AREA KERJA *</label>
                 <p class="text-xs text-slate-500 italic mb-2">Pilih salah satu lokasi tempat aktivitas kerja utama Anda.</p>
@@ -117,7 +124,7 @@
                 </div>
             </div>
 
-            <!-- 7. Waktu Tidur -->
+            <!-- 8. Waktu Tidur (Wajib) -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">Berapa jam total waktu tidur Anda sebelum mulai bekerja? *</label>
                 <p class="text-xs text-slate-500 italic mb-2">Pilih angka yang paling mendekati total jam tidur Anda.</p>
@@ -131,7 +138,7 @@
                 </div>
             </div>
 
-            <!-- 8. Kualitas Tidur -->
+            <!-- 9. Kualitas Tidur (Wajib) -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">Bagaimana kualitas istirahat/tidur Anda? *</label>
                 <div class="space-y-2">
@@ -143,20 +150,20 @@
                 </div>
             </div>
 
-            <!-- 9. Gejala Kesehatan -->
+            <!-- 10. Gejala Kesehatan (Checkbox) -->
             <div>
-                <label class="block text-sm font-bold text-slate-700 mb-1">Apakah Anda merasakan gejala kesehatan berikut hari ini? *</label>
+                <label class="block text-sm font-bold text-slate-700 mb-1">Apakah Anda merasakan gejala kesehatan berikut hari ini?</label>
                 <div class="space-y-2">
                     <label class="flex items-center"><input type="checkbox" name="Gejala" value="SAKIT KEPALA / PUSING" class="mr-3"> SAKIT KEPALA / PUSING</label>
                     <label class="flex items-center"><input type="checkbox" name="Gejala" value="BATUK / PILEK / SESAK NAFAS" class="mr-3"> BATUK / PILEK / SESAK NAFAS</label>
                     <label class="flex items-center"><input type="checkbox" name="Gejala" value="SAKIT PERUT / MUAL / DIARE" class="mr-3"> SAKIT PERUT / MUAL / DIARE</label>
                     <label class="flex items-center"><input type="checkbox" name="Gejala" value="NYERI OTOT / PEGAL LINU" class="mr-3"> NYERI OTOT / PEGAL LINU</label>
                     <label class="flex items-center"><input type="checkbox" name="Gejala" value="PANDANGAN KABUR / BERKUNANG-KUNANG" class="mr-3"> PANDANGAN KABUR / BERKUNANG-KUNANG</label>
-                    <label class="flex items-center"><input type="checkbox" name="Gejala" value="TIDAK ADA GEJALA" checked class="mr-3"> TIDAK ADA GEJALA</label>
+                    <label class="flex items-center"><input type="checkbox" name="Gejala" value="TIDAK ADA GEJALA" class="mr-3"> TIDAK ADA GEJALA</label>
                 </div>
             </div>
 
-            <!-- 10. Kondisi Fokus & Pikiran -->
+            <!-- 11. Kondisi Fokus & Pikiran (Wajib) -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">KONDISI FOKUS & PIKIRAN *</label>
                 <div class="space-y-2">
@@ -166,7 +173,7 @@
                 </div>
             </div>
 
-            <!-- 11. Konsumsi Obat -->
+            <!-- 12. Konsumsi Obat (Wajib) -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">Apakah Anda sedang mengonsumsi obat-obatan dalam 12 jam terakhir? *</label>
                 <div class="flex gap-4 mt-2">
@@ -175,7 +182,7 @@
                 </div>
             </div>
 
-            <!-- 12. Kesiapan Bekerja -->
+            <!-- 13. Kesiapan Bekerja (Wajib) -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">Berdasarkan kondisi di atas, bagaimana kesiapan Anda untuk bekerja sekarang? *</label>
                 <div class="space-y-2 mt-2">
@@ -196,9 +203,8 @@
             <div id="dataRingkasan" class="text-sm text-slate-600 space-y-2 py-4">
                 <!-- Data ringkasan muncul di sini -->
             </div>
-            <div class="flex gap-4 pt-4">
-                <button type="button" onclick="kembaliKeForm()" class="flex-1 bg-slate-200 text-slate-700 font-bold py-3 rounded-xl hover:bg-slate-300 transition">Edit Data</button>
-                <button type="button" onclick="kirimDataFinal()" class="flex-2 bg-green-600 text-white font-bold py-3 px-8 rounded-xl hover:bg-green-700 transition shadow-md">Kirim & Konfirmasi WA</button>
+            <div class="pt-4">
+                <button type="button" onclick="kirimDataFinal()" class="w-full bg-green-600 text-white font-bold py-3 px-8 rounded-xl hover:bg-green-700 transition shadow-md">Kirim & Konfirmasi WA</button>
             </div>
         </div>
     </main>
@@ -216,6 +222,9 @@
             let html = '';
             
             for (let [key, value] of formData.entries()) {
+                if (key === 'Email' && !value) {
+                    value = '- (Tidak diisi)';
+                }
                 html += `<p class="border-b border-slate-100 py-1"><span class="font-bold text-slate-800">${key}:</span> ${value}</p>`;
             }
             
@@ -225,38 +234,29 @@
             window.scrollTo(0, 0);
         });
 
-        // 2. Tombol "Edit Data" ditekan untuk kembali
-        function kembaliKeForm() {
-            form.classList.remove('hidden');
-            ringkasanPage.classList.add('hidden');
-        }
-
-        // 3. Tombol "Kirim & Konfirmasi WA" ditekan di halaman Ringkasan
+        // 2. Tombol "Kirim & Konfirmasi WA" ditekan di halaman Ringkasan
         function kirimDataFinal() {
             const formData = new FormData(form);
-            const data = Object.fromEntries(formData);
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbz5_e5RavmCvN9WJkxfsFwvlu-5A3TQi5jQ9KfwhxrHRQ1boinLOTUnPi3wzBEOUayw/exec';
+            
+            // Mengambil semua data checkbox "Gejala" agar digabung menjadi satu string (jika dipilih lebih dari satu)
+            const gejalaArray = formData.getAll('Gejala');
+            
+            // Konversi FormData menjadi objek biasa
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                if (key === 'Gejala') {
+                    data[key] = gejalaArray.join(', ');
+                } else {
+                    data[key] = value;
+                }
+            }
+
+            // Menggunakan URL Google Apps Script yang baru
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxU8UHVjeGNjIWhR7TqOu4ZUp2FEglgt8RTR37FIf4AlbAds3lJfG4nOqQWaBO0t9AT/exec';
             
             // Kirim data ke Google Sheets secara background
             fetch(scriptURL, {
                 method: 'POST',
                 mode: 'no-cors',
-                body: JSON.stringify(data)
-            }).then(() => {
-                // Ambil nilai penting untuk pengecekan status
-                const nama = formData.get('Nama');
-                const nohp = formData.get('NoHP');
-                const tidur = formData.get('Waktu Tidur');
-                const kualitas = formData.get('Kualitas Tidur');
-                const fokus = formData.get('Fokus');
-                const obat = formData.get('Obat');
-                const kesiapan = formData.get('Kesiapan Bekerja');
-
-                // Deteksi status danger / tidak fit
-                const isDanger = (
-                    tidur.includes("< 5 JAM") ||
-                    kualitas.includes("SANGAT BURUK") || 
-                    kualitas.includes("BURUK:") ||
-                    fokus === "SEDIKIT TERGANGGU" || 
-                    fokus === "SANGAT TERGANGGU" ||
-         
+                headers: {
+                    'Content-Type': 
