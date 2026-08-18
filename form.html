@@ -5,44 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fit to Work Assessment - OHS Center</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @page { size: A4; margin: 15mm 12mm; background-color: #f8fafc; }
-        body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
-    </style>
 </head>
 <body class="bg-slate-50 min-h-screen py-8">
 
     <main class="max-w-xl w-full mx-auto p-4">
-        <!-- Header dengan logo.png -->
+        <!-- Header -->
         <div class="bg-white p-6 rounded-t-2xl shadow-sm border-b border-slate-200 flex items-center space-x-4">
-            <img src="logo.png" alt="Logo Perusahaan" class="w-16 h-16 object-contain rounded-lg border border-slate-200 shadow-sm flex-shrink-0" onerror="this.onerror=null; this.src='https://via.placeholder.com/64?text=Logo';">
+            <img src="logo.png" alt="Logo" class="w-16 h-16 object-contain rounded-lg border border-slate-200 shadow-sm flex-shrink-0" onerror="this.onerror=null; this.src='https://via.placeholder.com/64?text=Logo';">
             <div>
                 <h1 class="text-xl font-bold text-slate-800 leading-tight">Fit to Work Assessment</h1>
                 <p class="text-xs text-slate-500 mt-0.5">OHS Center - Safety & Health Monitoring</p>
             </div>
         </div>
 
-        <!-- Form Lengkap -->
+        <!-- Form -->
         <form id="ohsForm" class="bg-white p-6 rounded-b-2xl shadow-lg border border-slate-200 space-y-6">
             
-            <!-- 1. Nama Karyawan -->
+            <!-- Nama Karyawan -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">NAMA KARYAWAN *</label>
-                <p class="text-xs text-slate-500 italic mb-2">Tuliskan nama lengkap Anda.</p>
-                <input type="text" id="nama" required placeholder="Jawaban Anda" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <input type="text" id="nama" required placeholder="Jawaban Anda" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
             </div>
 
-            <!-- 2. Nomor HP / WhatsApp -->
+            <!-- Nomor HP / WhatsApp -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">NOMOR HP / WHATSAPP *</label>
-                <p class="text-xs text-slate-500 italic mb-2">Masukkan nomor WhatsApp aktif yang bisa dihubungi (Contoh: 081234567890).</p>
-                <input type="tel" id="nohp" required placeholder="Jawaban Anda" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <input type="tel" id="nohp" required placeholder="08xxxxxxxxxx" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
             </div>
 
-            <!-- 3. Jadwal Kerja -->
+            <!-- Jadwal Kerja -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">JADWAL KERJA *</label>
-                <p class="text-xs text-slate-500 italic mb-2">Klik pada salah satu lingkaran yang sesuai dengan jadwal kerja Anda hari ini.</p>
                 <div class="space-y-2">
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="jadwalkerja" value="NON SHIFT" required class="mr-3"> NON SHIFT</label>
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="jadwalkerja" value="SHIFT PAGI" class="mr-3"> SHIFT PAGI</label>
@@ -50,156 +43,122 @@
                 </div>
             </div>
 
-            <!-- 4. Section -->
+            <!-- Section -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">SECTION *</label>
-                <p class="text-xs text-slate-500 italic mb-2">Klik kotak di bawah, lalu cari dan pilih nama departemen tempat Anda bertugas.</p>
-                <select id="section" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
+                <select id="section" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 bg-white">
                     <option value="" disabled selected>Pilih Section...</option>
-                    <option value="GENERAL MANAGER">GENERAL MANAGER</option>
-                    <option value="MANAGER">MANAGER</option>
                     <option value="PRODUCTION">PRODUCTION</option>
-                    <option value="MINE PROJECT">MINE PROJECT</option>
-                    <option value="GRADE CONTROL">GRADE CONTROL</option>
-                    <option value="STOCKPILE">STOCKPILE</option>
-                    <option value="PREPARATION">PREPARATION</option>
-                    <option value="LABORATORIUM">LABORATORIUM</option>
-                    <option value="SHIPPING">SHIPPING</option>
-                    <option value="GEOLOGY">GEOLOGY</option>
-                    <option value="MINE PLAN ENGINEERING">MINE PLAN ENGINEERING</option>
-                    <option value="SURVEY">SURVEY</option>
-                    <option value="CONSTRUCTION">CONSTRUCTION</option>
-                    <option value="MECHANICAL ELECTRICAL">MECHANICAL ELECTRICAL</option>
-                    <option value="COMPLIANCE">COMPLIANCE</option>
                     <option value="SAFETY / ERT / HEALTH">SAFETY / ERT / HEALTH</option>
-                    <option value="ENVIRONMENT">ENVIRONMENT</option>
-                    <option value="FORESTRY">FORESTRY</option>
-                    <option value="HR DEVELOPMENT">HR DEVELOPMENT</option>
-                    <option value="HR OPERATIONAL">HR OPERATIONAL</option>
+                    <option value="ENGINEERING">ENGINEERING</option>
+                    <option value="HRD">HRD</option>
                     <option value="GA">GA</option>
-                    <option value="IT">IT</option>
-                    <option value="EXTERNAL RELATION">EXTERNAL RELATION</option>
-                    <option value="SECURITY">SECURITY</option>
-                    <option value="FINANCE">FINANCE</option>
-                    <option value="PLANNING & LOGISTIC">PLANNING & LOGISTIC</option>
-                    <option value="ENGINEERING - PROJECT DEVELOPMENT">ENGINEERING - PROJECT DEVELOPMENT</option>
-                    <option value="NON ENGINEERING - STONE CRUSHER - PROJECT">NON ENGINEERING - STONE CRUSHER - PROJECT</option>
                 </select>
             </div>
 
-            <!-- 5. Kategori Golongan -->
+            <!-- Golongan -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">KATEGORI GOLONGAN *</label>
-                <p class="text-xs text-slate-500 italic mb-2">Pilih kategori atau level jabatan Anda saat ini.</p>
                 <div class="grid grid-cols-2 gap-2">
-                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="GENERAL MANAGER" required class="mr-2"> GENERAL MANAGER</label>
-                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="MANAGER" class="mr-2"> MANAGER</label>
-                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="SUPERINTENDENT" class="mr-2"> SUPERINTENDENT</label>
-                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="SUPERVISOR" class="mr-2"> SUPERVISOR</label>
+                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="STAFF" required class="mr-2"> STAFF</label>
                     <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="FOREMAN" class="mr-2"> FOREMAN</label>
-                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="JR. OFFICER" class="mr-2"> JR. OFFICER</label>
                     <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="CREW" class="mr-2"> CREW</label>
-                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="HELPER" class="mr-2"> HELPER</label>
                     <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="THL" class="mr-2"> THL</label>
                 </div>
             </div>
 
-            <!-- 6. Area Kerja -->
+            <!-- Area Kerja -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">AREA KERJA *</label>
-                <p class="text-xs text-slate-500 italic mb-2">Pilih lokasi aktivitas kerja utama Anda hari ini.</p>
                 <div class="space-y-2">
                     <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="areakerja" value="LAPANGAN" required class="mr-3"> LAPANGAN</label>
                     <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="areakerja" value="OFFICE" class="mr-3"> OFFICE</label>
-                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="areakerja" value="LAPANGAN & OFFICE" class="mr-3"> LAPANGAN & OFFICE</label>
-                    <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="areakerja" value="Yang lain" class="mr-3"> Yang lain</label>
                 </div>
             </div>
 
-            <!-- 7. Waktu Tidur -->
+            <!-- Waktu Tidur -->
             <div>
-                <label class="block text-sm font-bold text-slate-700 mb-1">Berapa jam total waktu tidur Anda sebelum mulai bekerja? *</label>
-                <p class="text-xs text-slate-500 italic mb-2">Pilih angka yang paling mendekati total jam tidur Anda tadi malam.</p>
+                <label class="block text-sm font-bold text-slate-700 mb-1">Berapa jam total waktu tidur Anda? *</label>
                 <div class="space-y-2">
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="< 5 JAM (KURANG DARI 5 JAM)" required class="mr-3"> &lt; 5 JAM (KURANG DARI 5 JAM)</label>
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="5 JAM" class="mr-3"> 5 JAM</label>
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="6 JAM" class="mr-3"> 6 JAM</label>
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="7 JAM" class="mr-3"> 7 JAM</label>
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="8 JAM" class="mr-3"> 8 JAM</label>
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="> 8 JAM (LEBIH DARI 8 JAM)" class="mr-3"> &gt; 8 JAM (LEBIH DARI 8 JAM)</label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="< 5 JAM" required class="mr-3"> &lt; 5 JAM</label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="5-6 JAM" class="mr-3"> 5 - 6 JAM</label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="> 7 JAM" class="mr-3"> &gt; 7 JAM</label>
                 </div>
             </div>
 
-            <!-- 8. Kualitas Tidur -->
+            <!-- Kualitas Tidur -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">Bagaimana kualitas istirahat/tidur Anda? *</label>
                 <div class="space-y-2">
-                    <label class="flex items-start p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="kualitastidur" value="SANGAT BURUK: TERBANGUN BERKALI-KALI, MERASA SANGAT LEMAS." required class="mt-1 mr-3"> <span><strong>SANGAT BURUK:</strong> TERBANGUN BERKALI-KALI, MERASA SANGAT LEMAS.</span></label>
-                    <label class="flex items-start p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="kualitastidur" value="BURUK: TIDUR NYENYAK, MASIH MERASA MENGANTUK." class="mt-1 mr-3"> <span><strong>BURUK:</strong> TIDUR NYENYAK, MASIH MERASA MENGANTUK.</span></label>
-                    <label class="flex items-start p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="kualitastidur" value="CUKUP: TIDUR STANDAR, KONDISI FISIK BIASA SAJA." class="mt-1 mr-3"> <span><strong>CUKUP:</strong> TIDUR STANDAR, KONDISI FISIK BIASA SAJA.</span></label>
-                    <label class="flex items-start p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="kualitastidur" value="BAIK: TIDUR NYENYAK, MERASA CUKUP SEGAR." class="mt-1 mr-3"> <span><strong>BAIK:</strong> TIDUR NYENYAK, MERASA CUKUP SEGAR.</span></label>
-                    <label class="flex items-start p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="kualitastidur" value="SANGAT BAIK: TIDUR SANGAT BERKUALITAS, MERASA SANGAT FIT & SIAP BEKERJA." class="mt-1 mr-3"> <span><strong>SANGAT BAIK:</strong> TIDUR SANGAT BERKUALITAS, MERASA SANGAT FIT & SIAP BEKERJA.</span></label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="kualitastidur" value="BURUK" required class="mr-3"> BURUK / MASIH MENGANTUK</label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="kualitastidur" value="BAIK" class="mr-3"> BAIK / SEGAR</label>
                 </div>
             </div>
 
-            <!-- 9. Gejala Kesehatan -->
+            <!-- Gejala -->
             <div>
-                <label class="block text-sm font-bold text-slate-700 mb-1">Apakah Anda merasakan gejala kesehatan berikut hari ini? *</label>
+                <label class="block text-sm font-bold text-slate-700 mb-1">Gejala kesehatan hari ini? *</label>
                 <div class="space-y-2">
-                    <label class="flex items-center"><input type="checkbox" name="gejala" value="SAKIT KEPALA / PUSING" class="mr-3"> SAKIT KEPALA / PUSING</label>
-                    <label class="flex items-center"><input type="checkbox" name="gejala" value="BATUK / PILEK / SESAK NAFAS" class="mr-3"> BATUK / PILEK / SESAK NAFAS</label>
-                    <label class="flex items-center"><input type="checkbox" name="gejala" value="SAKIT PERUT / MUAL / DIARE" class="mr-3"> SAKIT PERUT / MUAL / DIARE</label>
-                    <label class="flex items-center"><input type="checkbox" name="gejala" value="NYERI OTOT / PEGAL LINU" class="mr-3"> NYERI OTOT / PEGAL LINU</label>
-                    <label class="flex items-center"><input type="checkbox" name="gejala" value="PANDANGAN KABUR / BERKUNANG-KUNANG" class="mr-3"> PANDANGAN KABUR / BERKUNANG-KUNANG</label>
+                    <label class="flex items-center"><input type="checkbox" name="gejala" value="PUSING / SAKIT KEPALA" class="mr-3"> PUSING / SAKIT KEPALA</label>
                     <label class="flex items-center"><input type="checkbox" name="gejala" value="TIDAK ADA GEJALA" checked class="mr-3"> TIDAK ADA GEJALA</label>
                 </div>
             </div>
 
-            <!-- 10. Kondisi Fokus & Pikiran -->
+            <!-- Fokus & Pikiran -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">KONDISI FOKUS & PIKIRAN *</label>
                 <div class="space-y-2">
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="fokus" value="FOKUS & TENANG" required class="mr-3"> FOKUS & TENANG</label>
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="fokus" value="SEDIKIT TERGANGGU" class="mr-3"> SEDIKIT TERGANGGU</label>
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="fokus" value="SANGAT TERGANGGU" class="mr-3"> SANGAT TERGANGGU</label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="fokus" value="TERGANGGU" class="mr-3"> TERGANGGU</label>
                 </div>
             </div>
 
-            <!-- 11. Konsumsi Obat -->
+            <!-- Konsumsi Obat -->
             <div>
-                <label class="block text-sm font-bold text-slate-700 mb-1">Apakah Anda sedang mengonsumsi obat-obatan dalam 12 jam terakhir? *</label>
-                <div class="space-y-3">
-                    <div class="flex gap-4">
-                        <label class="flex items-center cursor-pointer"><input type="radio" name="obat" value="YA" required class="mr-2" onclick="document.getElementById('detailObatContainer').style.display='block'"> YA</label>
-                        <label class="flex items-center cursor-pointer"><input type="radio" name="obat" value="TIDAK" class="mr-2" onclick="document.getElementById('detailObatContainer').style.display='none'; document.getElementById('namaobat').value=''"> TIDAK</label>
-                    </div>
-                    <div id="detailObatContainer" style="display: none;" class="mt-2">
-                        <input type="text" id="namaobat" name="namaobat" placeholder="Tuliskan nama obat yang dikonsumsi..." class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm">
-                    </div>
+                <label class="block text-sm font-bold text-slate-700 mb-1">Konsumsi obat dalam 12 jam terakhir? *</label>
+                <div class="flex gap-4">
+                    <label class="flex items-center cursor-pointer"><input type="radio" name="obat" value="YA" required class="mr-2"> YA</label>
+                    <label class="flex items-center cursor-pointer"><input type="radio" name="obat" value="TIDAK" class="mr-2"> TIDAK</label>
                 </div>
             </div>
 
-            <!-- 12. Kesiapan Bekerja -->
+            <!-- Kesiapan Bekerja -->
             <div>
-                <label class="block text-sm font-bold text-slate-700 mb-1">Berdasarkan kondisi di atas, bagaimana kesiapan Anda untuk bekerja sekarang? *</label>
+                <label class="block text-sm font-bold text-slate-700 mb-1">KESIAPAN BEKERJA *</label>
                 <div class="space-y-2">
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-blue-50"><input type="radio" name="kesiapan" value="YA, SAYA SIAP & FIT UNTUK BEKERJA" required class="mr-3"> YA, SAYA SIAP & FIT UNTUK BEKERJA</label>
-                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-red-50"><input type="radio" name="kesiapan" value="TIDAK, SAYA MERASA TIDAK FIT/KURANG SEHAT" class="mr-3"> TIDAK, SAYA MERASA TIDAK FIT/KURANG SEHAT</label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-blue-50"><input type="radio" name="kesiapan" value="YA, SIAP & FIT" required class="mr-3"> YA, SAYA SIAP & FIT</label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-red-50"><input type="radio" name="kesiapan" value="TIDAK FIT" class="mr-3"> TIDAK, SAYA TIDAK FIT</label>
                 </div>
             </div>
 
             <!-- Tombol Kirim -->
             <div class="pt-4">
-                <button type="submit" class="w-full bg-blue-600 text-white font-bold py-4 px-8 rounded-xl hover:bg-blue-700 transition shadow-md">Kirim Laporan via WhatsApp</button>
+                <button type="submit" id="btnSubmit" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition">Kirim Asesmen</button>
             </div>
         </form>
+
+        <!-- Modal Sukses FIT -->
+        <div id="resultModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <div class="bg-white rounded-2xl p-6 max-w-sm w-full text-center space-y-4">
+                <div class="text-5xl">✅</div>
+                <h3 class="text-lg font-bold text-slate-800">STATUS: FIT</h3>
+                <p id="modalText" class="text-sm text-slate-600">Data Anda telah terekam di sistem. Anda siap bekerja.</p>
+                <button onclick="closeModal()" class="w-full bg-slate-800 text-white font-bold py-3 rounded-xl">Tutup</button>
+            </div>
+        </div>
     </main>
 
     <script>
+        // URL Google Apps Script yang sudah terhubung
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxgpMfsLXcSjan5HIbIVGQoybdJWklfliFezNWJS8ThaLRahkNTUh-sBTAE_I4JNPJE/exec";
+
         document.getElementById('ohsForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Mengambil nilai input
+            const btn = document.getElementById('btnSubmit');
+            btn.innerText = "Mengirim data...";
+            btn.disabled = true;
+
             const nama = document.getElementById('nama').value;
             const nohp = document.getElementById('nohp').value;
             const jadwal = document.querySelector('input[name="jadwalkerja"]:checked').value;
@@ -210,49 +169,86 @@
             const kualitas = document.querySelector('input[name="kualitastidur"]:checked').value;
             const gejala = Array.from(document.querySelectorAll('input[name="gejala"]:checked')).map(el => el.value).join(', ');
             const fokus = document.querySelector('input[name="fokus"]:checked').value;
-            const obatVal = document.querySelector('input[name="obat"]:checked').value;
-            const namaobat = document.getElementById('namaobat').value.trim();
+            const obat = document.querySelector('input[name="obat"]:checked').value;
             const kesiapan = document.querySelector('input[name="kesiapan"]:checked').value;
 
-            // Format status obat
-            let statusObat = obatVal;
-            if(obatVal === 'YA' && namaobat) {
-                statusObat = `YA (${namaobat})`;
-            }
-
-            // Logika Deteksi Status
+            // Logika Penentuan Status
             const isDanger = (
                 tidur.includes("< 5") ||
-                kualitas.includes("SANGAT BURUK") || kualitas.includes("BURUK") ||
+                kualitas.includes("BURUK") ||
                 gejala !== "TIDAK ADA GEJALA" ||
-                fokus !== "FOKUS & TENANG" ||
-                obatVal === "YA" ||
+                fokus.includes("TERGANGGU") ||
+                obat === "YA" ||
                 kesiapan.includes("TIDAK")
             );
 
-            const status = isDanger ? "TIDAK FIT" : "FIT";
-            const emojiHeader = isDanger ? "🚨 *FIT TO WORK - TIDAK FIT* 🚨" : "✅ *FIT TO WORK - FIT* ✅";
-            
-            // Susunan Pesan WhatsApp
-            let pesan = `${emojiHeader}%0A%0A` +
-                        `*Nama:* ${encodeURIComponent(nama)}%0A` +
-                        `*No HP:* ${encodeURIComponent(nohp)}%0A` +
-                        `*Jadwal:* ${encodeURIComponent(jadwal)}%0A` +
-                        `*Section:* ${encodeURIComponent(section)}%0A` +
-                        `*Golongan:* ${encodeURIComponent(golongan)}%0A` +
-                        `*Area Kerja:* ${encodeURIComponent(areakerja)}%0A` +
-                        `*Waktu Tidur:* ${encodeURIComponent(tidur)}%0A` +
-                        `*Kualitas Tidur:* ${encodeURIComponent(kualitas)}%0A` +
-                        `*Gejala:* ${encodeURIComponent(gejala)}%0A` +
-                        `*Fokus & Pikiran:* ${encodeURIComponent(fokus)}%0A` +
-                        `*Konsumsi Obat:* ${encodeURIComponent(statusObat)}%0A` +
-                        `*Kesiapan:* ${encodeURIComponent(kesiapan)}%0A` +
-                        `*Status:* ${encodeURIComponent(status)}`;
+            const statusFinal = isDanger ? "TIDAK FIT" : "FIT";
+            const waktuSekarang = new Date().toLocaleString('id-ID');
 
-            // Nomor Tujuan WhatsApp
-            const nomorAdmin = "6282239689985";
-            window.location.href = `https://wa.me/${nomorAdmin}?text=${pesan}`;
+            const payload = {
+                waktu: waktuSekarang,
+                nama: nama,
+                nohp: nohp,
+                jadwal: jadwal,
+                section: section,
+                golongan: golongan,
+                areakerja: areakerja,
+                tidur: tidur,
+                kualitas: kualitas,
+                gejala: gejala,
+                fokus: fokus,
+                obat: obat,
+                kesiapan: kesiapan,
+                status: statusFinal
+            };
+
+            // Kirim data ke Google Spreadsheet via Fetch API
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).then(() => {
+                btn.innerText = "Kirim Asesmen";
+                btn.disabled = false;
+
+                if (statusFinal === "FIT") {
+                    // Jika FIT: Tampilkan modal sukses, tidak buka WhatsApp
+                    document.getElementById('modalText').innerText = `Terima kasih, ${nama}. Data Anda berhasil tersimpan di sistem dan kondisi Anda dinyatakan FIT.`;
+                    document.getElementById('resultModal').classList.remove('hidden');
+                } else {
+                    // Jika TIDAK FIT: Data masuk spreadsheet, lalu buka WhatsApp otomatis dengan kata awalan
+                    let pesan = `Halo Tim OHS Center, mohon izin melaporkan hasil asesmen kesehatan harian saya.%0A%0A` +
+                                `🚨 *FIT TO WORK - TIDAK FIT* 🚨%0A%0A` +
+                                `*Nama:* ${encodeURIComponent(nama)}%0A` +
+                                `*No HP:* ${encodeURIComponent(nohp)}%0A` +
+                                `*Jadwal:* ${encodeURIComponent(jadwal)}%0A` +
+                                `*Section:* ${encodeURIComponent(section)}%0A` +
+                                `*Golongan:* ${encodeURIComponent(golongan)}%0A` +
+                                `*Area Kerja:* ${encodeURIComponent(areakerja)}%0A` +
+                                `*Waktu Tidur:* ${encodeURIComponent(tidur)}%0A` +
+                                `*Kualitas Tidur:* ${encodeURIComponent(kualitas)}%0A` +
+                                `*Gejala:* ${encodeURIComponent(gejala)}%0A` +
+                                `*Fokus & Pikiran:* ${encodeURIComponent(fokus)}%0A` +
+                                `*Konsumsi Obat:* ${encodeURIComponent(obat)}%0A` +
+                                `*Status:* TIDAK FIT%0A%0A` +
+                                `Mohon arahan dan tindak lanjut lebih lanjut. Terima kasih.`;
+
+                    const nomorAdmin = "6282239689985"; // Nomor WhatsApp Admin OHS
+                    window.location.href = `https://wa.me/${nomorAdmin}?text=${pesan}`;
+                }
+            }).catch((error) => {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan saat mengirim data ke spreadsheet.');
+                btn.innerText = "Kirim Asesmen";
+                btn.disabled = false;
+            });
         });
+
+        function closeModal() {
+            document.getElementById('resultModal').classList.add('hidden');
+            document.getElementById('ohsForm').reset();
+        }
     </script>
 </body>
 </html>
