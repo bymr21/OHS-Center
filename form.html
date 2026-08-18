@@ -35,7 +35,7 @@
             <!-- 2. Nomor HP / WhatsApp -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">NOMOR HP / WHATSAPP *</label>
-                <p class="text-xs text-slate-500 italic mb-2">Masukkan nomor WhatsApp aktif yang bisa dihubungi untuk keperluan koordinasi kesehatan (Contoh: 081234567890).</p>
+                <p class="text-xs text-slate-500 italic mb-2">Masukkan nomor WhatsApp aktif yang bisa dihubungi (Contoh: 081234567890).</p>
                 <input type="tel" id="nohp" required placeholder="Jawaban Anda" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
 
@@ -90,7 +90,7 @@
             <!-- 5. Kategori Golongan -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">KATEGORI GOLONGAN *</label>
-                <p class="text-xs text-slate-500 italic mb-2">Pilih kategori atau level jabatan Anda saat ini pada daftar dibawah.</p>
+                <p class="text-xs text-slate-500 italic mb-2">Pilih kategori atau level jabatan Anda saat ini.</p>
                 <div class="grid grid-cols-2 gap-2">
                     <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="GENERAL MANAGER" required class="mr-2"> GENERAL MANAGER</label>
                     <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="golongan" value="MANAGER" class="mr-2"> MANAGER</label>
@@ -107,7 +107,7 @@
             <!-- 6. Area Kerja -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">AREA KERJA *</label>
-                <p class="text-xs text-slate-500 italic mb-2">Pilih salah satu lokasi yang menjadi tempat aktivitas kerja utama Anda hari ini.</p>
+                <p class="text-xs text-slate-500 italic mb-2">Pilih lokasi aktivitas kerja utama Anda hari ini.</p>
                 <div class="space-y-2">
                     <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="areakerja" value="LAPANGAN" required class="mr-3"> LAPANGAN</label>
                     <label class="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="areakerja" value="OFFICE" class="mr-3"> OFFICE</label>
@@ -119,7 +119,7 @@
             <!-- 7. Waktu Tidur -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">Berapa jam total waktu tidur Anda sebelum mulai bekerja? *</label>
-                <p class="text-xs text-slate-500 italic mb-2">Pilih angka yang paling mendekati total jam tidur Anda tadi malam. <br><strong>Contoh:</strong> Jika Anda tidur jam <strong>10 malam</strong> dan bangun jam <strong>5 pagi</strong>, maka total tidur Anda adalah <strong>7 Jam</strong>.</p>
+                <p class="text-xs text-slate-500 italic mb-2">Pilih angka yang paling mendekati total jam tidur Anda tadi malam.</p>
                 <div class="space-y-2">
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="< 5 JAM (KURANG DARI 5 JAM)" required class="mr-3"> &lt; 5 JAM (KURANG DARI 5 JAM)</label>
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="waktutidur" value="5 JAM" class="mr-3"> 5 JAM</label>
@@ -133,7 +133,6 @@
             <!-- 8. Kualitas Tidur -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">Bagaimana kualitas istirahat/tidur Anda? *</label>
-                <p class="text-xs text-slate-500 italic mb-2">Pilih satu jawaban yang paling menggambarkan perasaan Anda saat bangun tidur tadi.</p>
                 <div class="space-y-2">
                     <label class="flex items-start p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="kualitastidur" value="SANGAT BURUK: TERBANGUN BERKALI-KALI, MERASA SANGAT LEMAS." required class="mt-1 mr-3"> <span><strong>SANGAT BURUK:</strong> TERBANGUN BERKALI-KALI, MERASA SANGAT LEMAS.</span></label>
                     <label class="flex items-start p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="kualitastidur" value="BURUK: TIDUR NYENYAK, MASIH MERASA MENGANTUK." class="mt-1 mr-3"> <span><strong>BURUK:</strong> TIDUR NYENYAK, MASIH MERASA MENGANTUK.</span></label>
@@ -146,7 +145,6 @@
             <!-- 9. Gejala Kesehatan -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">Apakah Anda merasakan gejala kesehatan berikut hari ini? *</label>
-                <p class="text-xs text-slate-500 italic mb-2">Centang pada gejala yang Anda rasakan, atau pilih 'TIDAK ADA GEJALA' jika Anda merasa sehat hari ini.</p>
                 <div class="space-y-2">
                     <label class="flex items-center"><input type="checkbox" name="gejala" value="SAKIT KEPALA / PUSING" class="mr-3"> SAKIT KEPALA / PUSING</label>
                     <label class="flex items-center"><input type="checkbox" name="gejala" value="BATUK / PILEK / SESAK NAFAS" class="mr-3"> BATUK / PILEK / SESAK NAFAS</label>
@@ -160,7 +158,6 @@
             <!-- 10. Kondisi Fokus & Pikiran -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">KONDISI FOKUS & PIKIRAN *</label>
-                <p class="text-xs text-slate-500 italic mb-2">Kesehatan mental memengaruhi fokus dan keselamatan kerja Anda. Pilih kondisi yang paling menggambarkan perasaan Anda saat ini. Jika Anda merasa sangat terganggu/sulit fokus, sangat disarankan untuk berkonsultasi dengan pengawas/medik demi keamanan bersama.</p>
                 <div class="space-y-2">
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="fokus" value="FOKUS & TENANG" required class="mr-3"> FOKUS & TENANG</label>
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-slate-50"><input type="radio" name="fokus" value="SEDIKIT TERGANGGU" class="mr-3"> SEDIKIT TERGANGGU</label>
@@ -170,8 +167,7 @@
 
             <!-- 11. Konsumsi Obat -->
             <div>
-                <label class="block text-sm font-bold text-slate-700 mb-1">Apakah Anda sedang mengonsumsi obat-obatan dalam 12 jam terakhir? (Obat flu, batuk, atau obat yang menyebabkan kantuk) *</label>
-                <p class="text-xs text-slate-500 italic mb-2">Pilih 'YA' jika Anda minum obat flu, batuk, atau obat lain yang bisa menyebabkan kantuk dalam 12 jam terakhir.</p>
+                <label class="block text-sm font-bold text-slate-700 mb-1">Apakah Anda sedang mengonsumsi obat-obatan dalam 12 jam terakhir? *</label>
                 <div class="space-y-3">
                     <div class="flex gap-4">
                         <label class="flex items-center cursor-pointer"><input type="radio" name="obat" value="YA" required class="mr-2" onclick="document.getElementById('detailObatContainer').style.display='block'"> YA</label>
@@ -186,24 +182,15 @@
             <!-- 12. Kesiapan Bekerja -->
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">Berdasarkan kondisi di atas, bagaimana kesiapan Anda untuk bekerja sekarang? *</label>
-                <div class="text-xs text-slate-500 italic mb-3 bg-amber-50 p-3 rounded-lg border border-amber-200">
-                    Jika Anda merasa <strong>TIDAK FIT</strong> atau memilih <strong>'Sangat Terganggu'</strong> pada poin <strong>FOKUS DAN PIKIRAN</strong>, Anda <strong>WAJIB</strong> segera:
-                    <ol class="list-decimal list-inside mt-1 space-y-1">
-                        <li>Lapor ke Pengawas/Foreman.</li>
-                        <li>Kunjungi klinik site untuk observasi.</li>
-                        <li>Jangan mengoperasikan unit/kendaraan sebelum ada instruksi lebih lanjut.</li>
-                    </ol>
-                </div>
                 <div class="space-y-2">
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-blue-50"><input type="radio" name="kesiapan" value="YA, SAYA SIAP & FIT UNTUK BEKERJA" required class="mr-3"> YA, SAYA SIAP & FIT UNTUK BEKERJA</label>
                     <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-red-50"><input type="radio" name="kesiapan" value="TIDAK, SAYA MERASA TIDAK FIT/KURANG SEHAT" class="mr-3"> TIDAK, SAYA MERASA TIDAK FIT/KURANG SEHAT</label>
                 </div>
             </div>
 
-            <!-- Tombol -->
-            <div class="flex gap-4 pt-4">
-                <button type="button" onclick="history.back()" class="flex-1 bg-slate-200 text-slate-700 font-bold py-4 rounded-xl hover:bg-slate-300 transition">Kembali</button>
-                <button type="submit" class="flex-2 bg-blue-600 text-white font-bold py-4 px-8 rounded-xl hover:bg-blue-700 transition">Kirim Laporan</button>
+            <!-- Tombol Kirim -->
+            <div class="pt-4">
+                <button type="submit" class="w-full bg-blue-600 text-white font-bold py-4 px-8 rounded-xl hover:bg-blue-700 transition shadow-md">Kirim Laporan via WhatsApp</button>
             </div>
         </form>
     </main>
@@ -212,7 +199,7 @@
         document.getElementById('ohsForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Mengambil nilai
+            // Mengambil nilai input
             const nama = document.getElementById('nama').value;
             const nohp = document.getElementById('nohp').value;
             const jadwal = document.querySelector('input[name="jadwalkerja"]:checked').value;
@@ -227,13 +214,13 @@
             const namaobat = document.getElementById('namaobat').value.trim();
             const kesiapan = document.querySelector('input[name="kesiapan"]:checked').value;
 
-            // Format status konsumsi obat dengan detail jika ada
+            // Format status obat
             let statusObat = obatVal;
             if(obatVal === 'YA' && namaobat) {
                 statusObat = `YA (${namaobat})`;
             }
 
-            // Logika Deteksi
+            // Logika Deteksi Status
             const isDanger = (
                 tidur.includes("< 5") ||
                 kualitas.includes("SANGAT BURUK") || kualitas.includes("BURUK") ||
@@ -243,15 +230,11 @@
                 kesiapan.includes("TIDAK")
             );
 
-            // Tentukan status
             const status = isDanger ? "TIDAK FIT" : "FIT";
+            const emojiHeader = isDanger ? "🚨 *FIT TO WORK - TIDAK FIT* 🚨" : "✅ *FIT TO WORK - FIT* ✅";
             
-            // Format Pesan WhatsApp
-            let pesan = "";
-            if (isDanger) {
-                pesan = `🚨 *FIT TO WORK - TIDAK FIT* 🚨%0A%0A` +
-                        `Yth. Admin OHS,%0A` +
-                        `Mohon perhatian, sistem mendeteksi potensi risiko kesehatan/fokus:%0A%0A` +
+            // Susunan Pesan WhatsApp
+            let pesan = `${emojiHeader}%0A%0A` +
                         `*Nama:* ${encodeURIComponent(nama)}%0A` +
                         `*No HP:* ${encodeURIComponent(nohp)}%0A` +
                         `*Jadwal:* ${encodeURIComponent(jadwal)}%0A` +
@@ -259,30 +242,14 @@
                         `*Golongan:* ${encodeURIComponent(golongan)}%0A` +
                         `*Area Kerja:* ${encodeURIComponent(areakerja)}%0A` +
                         `*Waktu Tidur:* ${encodeURIComponent(tidur)}%0A` +
-                        `*Kualitas Tidur:* ${encodeURIComponent(kualitastidur)}%0A` +
+                        `*Kualitas Tidur:* ${encodeURIComponent(kualitas)}%0A` +
                         `*Gejala:* ${encodeURIComponent(gejala)}%0A` +
                         `*Fokus & Pikiran:* ${encodeURIComponent(fokus)}%0A` +
                         `*Konsumsi Obat:* ${encodeURIComponent(statusObat)}%0A` +
                         `*Kesiapan:* ${encodeURIComponent(kesiapan)}%0A` +
                         `*Status:* ${encodeURIComponent(status)}`;
-            } else {
-                pesan = `✅ *FIT TO WORK - FIT* ✅%0A%0A` +
-                        `*Nama:* ${encodeURIComponent(nama)}%0A` +
-                        `*No HP:* ${encodeURIComponent(nohp)}%0A` +
-                        `*Jadwal:* ${encodeURIComponent(jadwal)}%0A` +
-                        `*Section:* ${encodeURIComponent(section)}%0A` +
-                        `*Golongan:* ${encodeURIComponent(golongan)}%0A` +
-                        `*Area Kerja:* ${encodeURIComponent(areakerja)}%0A` +
-                        `*Waktu Tidur:* ${encodeURIComponent(tidur)}%0A` +
-                        `*Kualitas Tidur:* ${encodeURIComponent(kualitastidur)}%0A` +
-                        `*Gejala:* ${encodeURIComponent(gejala)}%0A` +
-                        `*Fokus & Pikiran:* ${encodeURIComponent(fokus)}%0A` +
-                        `*Konsumsi Obat:* ${encodeURIComponent(statusObat)}%0A` +
-                        `*Kesiapan:* ${encodeURIComponent(kesiapan)}%0A` +
-                        `*Status:* ${encodeURIComponent(status)}`;
-            }
 
-            // Nomor tujuan WhatsApp
+            // Nomor Tujuan WhatsApp
             const nomorAdmin = "6282239689985";
             window.location.href = `https://wa.me/${nomorAdmin}?text=${pesan}`;
         });
