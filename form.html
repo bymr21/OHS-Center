@@ -3,61 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulir - OHS Center</title>
+    <title>Formulir Laporan - OHS Center</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-100 min-h-screen flex flex-col justify-between">
+<body class="bg-slate-100 min-h-screen py-6">
 
-    <header class="bg-slate-900 text-white shadow-md">
-        <div class="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
+    <main class="max-w-xl w-full mx-auto p-6">
+        <!-- Judul dengan Logo Berdampingan -->
+        <div class="flex items-center gap-4 mb-6 pb-4 border-b border-slate-300">
+            <img src="logo.png" alt="Logo" class="w-12 h-12 rounded-full border-2 border-blue-600 shadow-sm">
+            <h2 class="text-2xl font-bold text-slate-800">Formulir Laporan</h2>
+        </div>
+
+        <form id="ohsForm" class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
             <div>
-                <span class="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Safety Management</span>
-                <h1 class="text-xl font-black mt-1 tracking-wide">OHS CENTER</h1>
+                <label class="block text-sm font-semibold text-slate-700 mb-1">Nama Lengkap</label>
+                <input type="text" id="nama" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Masukkan nama Anda">
             </div>
-            <a href="index.html" class="text-xs text-slate-300 hover:text-white bg-slate-800 px-3 py-2 rounded-lg border border-slate-700">&larr; Kembali</a>
-        </div>
-    </header>
 
-    <main class="max-w-xl w-full mx-auto p-4 sm:p-6 my-6">
-        <div class="bg-white rounded-xl shadow-lg p-6 sm:p-8 border-t-4 border-blue-600">
-            <h2 class="text-lg font-bold text-slate-800 mb-4 pb-2 border-b border-slate-100">Formulir Laporan</h2>
-            
-            <form id="ohsForm" class="space-y-4">
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-1">Nama Lengkap</label>
-                    <input type="text" id="nama" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-800" placeholder="Masukkan nama Anda">
-                </div>
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-1">Nomor WhatsApp</label>
+                <input type="tel" id="waPengirim" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="62812xxxxxxx">
+            </div>
 
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-1">Nomor WhatsApp</label>
-                    <input type="tel" id="waPengirim" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-800" placeholder="08xxxxxxxxxx">
-                </div>
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-1">Kategori</label>
+                <select id="kategori" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    <option value="Unsafe Action">Unsafe Action</option>
+                    <option value="Unsafe Condition">Unsafe Condition</option>
+                    <option value="Near Miss">Near Miss</option>
+                    <option value="Saran/Masukan">Saran/Masukan</option>
+                </select>
+            </div>
 
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-1">Kategori</label>
-                    <select id="kategori" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white text-slate-800">
-                        <option value="Unsafe Action">Unsafe Action</option>
-                        <option value="Unsafe Condition">Unsafe Condition</option>
-                        <option value="Near Miss">Near Miss</option>
-                        <option value="Saran/Masukan">Saran & Masukan</option>
-                    </select>
-                </div>
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-1">Lokasi</label>
+                <input type="text" id="lokasi" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Contoh: Area Kerja A">
+            </div>
 
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-1">Lokasi</label>
-                    <input type="text" id="lokasi" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-800" placeholder="Contoh: Area Kerja A">
-                </div>
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-1">Deskripsi Temuan</label>
+                <textarea id="pesan" rows="4" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Jelaskan detail temuan Anda..."></textarea>
+            </div>
 
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-1">Deskripsi Temuan</label>
-                    <textarea id="pesan" rows="4" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-800" placeholder="Jelaskan detail temuan Anda..."></textarea>
-                </div>
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition duration-200 shadow-md">
+                Kirim ke WhatsApp OHS Center
+            </button>
+        </form>
 
-                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200 shadow-md">
-                    Kirim ke WhatsApp OHS Center
-                </button>
-            </form>
-        </div>
+        <a href="index.html" class="block text-center mt-6 text-sm text-slate-500 hover:text-slate-800 font-medium">
+            &larr; Kembali ke Beranda
+        </a>
     </main>
 
     <script>
@@ -68,17 +64,15 @@
             const kategori = document.getElementById('kategori').value;
             const lokasi = document.getElementById('lokasi').value;
             const pesan = document.getElementById('pesan').value;
-            
-            // GANTI DENGAN NOMOR ANDA (Awali 62)
-            const nomorAdmin = "6282239689985"; 
 
+            const nomorAdmin = "6282239689985";
             const textPesan = `*LAPORAN BARU - OHS CENTER*%0A` +
                               `----------------------------%0A` +
-                              `*Pelapor:* ${nama}%0A` +
-                              `*WA:* ${waPengirim}%0A` +
-                              `*Kategori:* ${kategori}%0A` +
-                              `*Lokasi:* ${lokasi}%0A` +
-                              `*Detail:* ${pesan}%0A` +
+                              `Pelapor: ${nama}%0A` +
+                              `WA: ${waPengirim}%0A` +
+                              `Kategori: ${kategori}%0A` +
+                              `Lokasi: ${lokasi}%0A` +
+                              `Detail: ${pesan}%0A` +
                               `----------------------------%0A` +
                               `_Diterima via Web_`;
 
@@ -87,4 +81,3 @@
     </script>
 </body>
 </html>
-
