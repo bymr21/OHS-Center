@@ -179,9 +179,16 @@
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">Apakah Anda sedang mengonsumsi obat-obatan dalam 12 jam terakhir? (Obat flu, batuk, atau obat yang menyebabkan kantuk) *</label>
                 <p class="text-xs text-slate-500 mb-2">Pilih 'YA' jika Anda minum obat flu, batuk, atau obat lain yang bisa menyebabkan kantuk dalam 12 jam terakhir.</p>
-                <div class="flex gap-4">
-                    <label class="flex items-center cursor-pointer"><input type="radio" name="obat" value="YA" required class="mr-2"> YA</label>
-                    <label class="flex items-center cursor-pointer"><input type="radio" name="obat" value="TIDAK" class="mr-2"> TIDAK</label>
+                <div class="space-y-3">
+                    <div class="flex gap-4">
+                        <label class="flex items-center cursor-pointer"><input type="radio" name="obat" value="YA" required class="mr-2" onclick="toggleObatInput(true)"> YA</label>
+                        <label class="flex items-center cursor-pointer"><input type="radio" name="obat" value="TIDAK" class="mr-2" onclick="toggleObatInput(false)"> TIDAK</label>
+                    </div>
+                    <!-- Input Tambahan Jenis Obat (Hidden by default) -->
+                    <div id="containerJenisObat" class="hidden pt-2">
+                        <label class="block text-xs font-bold text-slate-600 mb-1">Tuliskan nama/jenis obat yang sedang diminum:</label>
+                        <input type="text" id="jenisobat" placeholder="Contoh: Obat Flu Paramex / Cetirizine" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm">
+                    </div>
                 </div>
             </div>
 
@@ -218,6 +225,19 @@
     <script>
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxgpMfsLXcSjan5HIbIVGQoybdJWklfliFezNWJS8ThaLRahkNTUh-sBTAE_I4JNPJE/exec";
 
+        function toggleObatInput(show) {
+            const container = document.getElementById('containerJenisObat');
+            const inputField = document.getElementById('jenisobat');
+            if (show) {
+                container.classList.remove('hidden');
+                inputField.required = true;
+            } else {
+                container.classList.add('hidden');
+                inputField.required = false;
+                inputField.value = '';
+            }
+        }
+
         document.getElementById('ohsForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -242,7 +262,14 @@
             const kualitas = document.querySelector('input[name="kualitastidur"]:checked').value;
             const gejala = Array.from(document.querySelectorAll('input[name="gejala"]:checked')).map(el => el.value).join(', ');
             const fokus = document.querySelector('input[name="fokus"]:checked').value;
-            const obat = document.querySelector('input[name="obat"]:checked').value;
+            
+            const obatChoice = document.querySelector('input[name="obat"]:checked').value;
+            let obatVal = obatChoice;
+            if (obatChoice === "YA") {
+                const jenisObatText = document.getElementById('jenisobat').value.trim();
+                obatVal = jenisObatText ? `YA (Jenis: ${jenisObatText})` : "YA";
+            }
+
             const kesiapan = document.querySelector('input[name="kesiapan"]:checked').value;
 
             // Logika Penentuan Status Otomatis
@@ -252,7 +279,7 @@
                 kualitas.includes("BURUK") ||
                 gejala !== "TIDAK ADA GEJALA" ||
                 fokus.includes("TERGANGGU") ||
-                obat === "YA" ||
+                obatChoice === "YA" ||
                 kesiapan.includes("TIDAK")
             );
 
@@ -272,7 +299,7 @@
                 kualitas: kualitas,
                 gejala: gejala,
                 fokus: fokus,
-                obat: obat,
+                obat: obatVal,
                 kesiapan: kesiapan,
                 status: statusFinal
             };
@@ -292,23 +319,23 @@
                     document.getElementById('modalText').innerText = `Terima kasih, ${nama} (NIK: ${nik}). Data Anda berhasil tersimpan di sistem dan kondisi Anda dinyatakan FIT.`;
                     document.getElementById('resultModal').classList.remove('hidden');
                 } else {
-                    // Jika TIDAK FIT: Data masuk spreadsheet, lalu otomatis buka WhatsApp
-                    let pesan = `Halo Tim OHS Center, mohon izin melaporkan hasil asesmen kesehatan harian saya.%0A%0A` +
+                    // Jika TIDAK FIT: Data masuk spreadsheet, lalu otomatis buka WhatsApp secara rinci dari 1 sampai terakhir
+                    let pesan = `Halo Tim OHS Center, mohon izin melaporkan hasil asesmen kesehatan harian saya secara rinci:%0A%0A` +
                                 `🚨 *FIT TO WORK - TIDAK FIT* 🚨%0A%0A` +
-                                `*Nama:* ${encodeURIComponent(nama)}%0A` +
-                                `*NIK (Mine Permit):* ${encodeURIComponent(nik)}%0A` +
-                                `*No HP:* ${encodeURIComponent(nohp)}%0A` +
-                                `*Jadwal:* ${encodeURIComponent(jadwal)}%0A` +
-                                `*Section:* ${encodeURIComponent(section)}%0A` +
-                                `*Golongan:* ${encodeURIComponent(golongan)}%0A` +
-                                `*Area Kerja:* ${encodeURIComponent(areakerja)}%0A` +
-                                `*Waktu Tidur:* ${encodeURIComponent(tidur)}%0A` +
-                                `*Kualitas Tidur:* ${encodeURIComponent(kualitas)}%0A` +
-                                `*Gejala:* ${encodeURIComponent(gejala)}%0A` +
-                                `*Fokus & Pikiran:* ${encodeURIComponent(fokus)}%0A` +
-                                `*Konsumsi Obat:* ${encodeURIComponent(obat)}%0A` +
-                                `*Kesiapan:* ${encodeURIComponent(kesiapan)}%0A` +
-                                `*Status:* TIDAK FIT%0A%0A` +
+                                `1. *Nama Karyawan:* ${encodeURIComponent(nama)}%0A` +
+                                `2. *Nomor Induk Karyawan (NIK):* ${encodeURIComponent(nik)}%0A` +
+                                `3. *Nomor HP / WhatsApp:* ${encodeURIComponent(nohp)}%0A` +
+                                `4. *Jadwal Kerja:* ${encodeURIComponent(jadwal)}%0A` +
+                                `5. *Section:* ${encodeURIComponent(section)}%0A` +
+                                `6. *Kategori Golongan:* ${encodeURIComponent(golongan)}%0A` +
+                                `7. *Area Kerja:* ${encodeURIComponent(areakerja)}%0A` +
+                                `8. *Waktu Tidur:* ${encodeURIComponent(tidur)}%0A` +
+                                `9. *Kualitas Tidur:* ${encodeURIComponent(kualitas)}%0A` +
+                                `10. *Gejala Kesehatan:* ${encodeURIComponent(gejala)}%0A` +
+                                `11. *Kondisi Fokus & Pikiran:* ${encodeURIComponent(fokus)}%0A` +
+                                `12. *Konsumsi Obat (12 Jam Terakhir):* ${encodeURIComponent(obatVal)}%0A` +
+                                `13. *Kesiapan Bekerja:* ${encodeURIComponent(kesiapan)}%0A` +
+                                `*Status Akhir:* TIDAK FIT%0A%0A` +
                                 `Mohon arahan dan tindak lanjut lebih lanjut. Terima kasih.`;
 
                     const nomorAdmin = "6282239689985"; // Nomor WhatsApp Admin OHS
@@ -325,6 +352,7 @@
         function closeModal() {
             document.getElementById('resultModal').classList.add('hidden');
             document.getElementById('ohsForm').reset();
+            toggleObatInput(false);
         }
     </script>
 </body>
