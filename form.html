@@ -3,51 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulir Laporan - OHS Center</title>
+    <title>Fit to Work - OHS Center</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-100 min-h-screen py-6">
 
-    <main class="max-w-xl w-full mx-auto p-6">
+    <main class="max-w-2xl w-full mx-auto p-6">
         <!-- Judul dengan Logo Berdampingan -->
         <div class="flex items-center gap-4 mb-6 pb-4 border-b border-slate-300">
-            <img src="logo.png" alt="Logo" class="w-12 h-12 rounded-full border-2 border-blue-600 shadow-sm">
-            <h2 class="text-2xl font-bold text-slate-800">Formulir Laporan</h2>
+            <img src="logo.png" alt="Logo" class="w-12 h-12 rounded-full border-2 border-blue-600 shadow-sm object-cover">
+            <div>
+                <h2 class="text-2xl font-bold text-slate-800">Fit to Work</h2>
+                <p class="text-xs text-slate-500">OHS Center - Fitness for Work Assessment</p>
+            </div>
         </div>
 
-        <form id="ohsForm" class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+        <form id="ohsForm" class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-6">
+            
+            <!-- Nama Karyawan -->
             <div>
-                <label class="block text-sm font-semibold text-slate-700 mb-1">Nama Lengkap</label>
-                <input type="text" id="nama" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Masukkan nama Anda">
+                <label class="block text-sm font-semibold text-slate-700 mb-1">Nama Karyawan <span class="text-red-500">*</span></label>
+                <input type="text" id="nama" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Masukkan nama lengkap">
             </div>
 
+            <!-- NIK -->
             <div>
-                <label class="block text-sm font-semibold text-slate-700 mb-1">Nomor WhatsApp</label>
-                <input type="tel" id="waPengirim" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="62812xxxxxxx">
+                <label class="block text-sm font-semibold text-slate-700 mb-1">Nomor Induk Karyawan (NIK) <span class="text-red-500">*</span></label>
+                <input type="text" id="nik" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Masukkan NIK">
             </div>
 
+            <!-- Nomor WhatsApp -->
             <div>
-                <label class="block text-sm font-semibold text-slate-700 mb-1">Kategori</label>
-                <select id="kategori" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    <option value="Unsafe Action">Unsafe Action</option>
-                    <option value="Unsafe Condition">Unsafe Condition</option>
-                    <option value="Near Miss">Near Miss</option>
-                    <option value="Saran/Masukan">Saran/Masukan</option>
+                <label class="block text-sm font-semibold text-slate-700 mb-1">Nomor WhatsApp <span class="text-red-500">*</span></label>
+                <input type="tel" id="waPengirim" required pattern="[0-9]+" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Contoh: 628123456789">
+            </div>
+
+            <!-- Email -->
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-1">Email Karyawan <span class="text-slate-400 font-normal">(Opsional)</span></label>
+                <input type="email" id="email" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="email@domain.com">
+            </div>
+
+            <!-- Jadwal Kerja -->
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Jadwal Kerja <span class="text-red-500">*</span></label>
+                <div class="space-y-2">
+                    <label class="flex items-center gap-2"><input type="radio" name="jadwal" value="NON SHIFT" required class="text-blue-600"> NON SHIFT</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="jadwal" value="SHIFT PAGI" class="text-blue-600"> SHIFT PAGI</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="jadwal" value="SHIFT MALAM" class="text-blue-600"> SHIFT MALAM</label>
+                </div>
+            </div>
+
+            <!-- Departemen -->
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-1">Section / Departemen <span class="text-red-500">*</span></label>
+                <select id="departemen" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
+                    <option value="">-- Pilih Departemen --</option>
+                    <option value="General Manager">General Manager</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Production">Production</option>
+                    <option value="Mine Project">Mine Project</option>
+                    <option value="Grade Control">Grade Control</option>
+                    <option value="Stockpile">Stockpile</option>
+                    <option value="Preparation">Preparation</option>
+                    <option value="Laboratorium">Laboratorium</option>
+                    <option value="Shipping">Shipping</option>
+                    <option value="Geology">Geology</option>
+                    <option value="Mine Plan Engineering">Mine Plan Engineering</option>
+                    <option value="Survey">Survey</option>
+                    <option value="Construction">Construction</option>
+                    <option value="Mechanical Electrical">Mechanical Electrical</option>
+                    <option value="Compliance">Compliance</option>
+                    <option value="Safety / ERT / Health">Safety / ERT / Health</option>
+                    <option value="Environment">Environment</option>
+                    <option value="Forestry">Forestry</option>
+                    <option value="HR Development">HR Development</option>
+                    <option value="HR Operational">HR Operational</option>
+                    <option value="GA">GA</option>
+                    <option value="IT">IT</option>
+                    <option value="External Relation">External Relation</option>
+                    <option value="Security">Security</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Planning & Logistic">Planning & Logistic</option>
+                    <option value="Engineering - Project Development">Engineering - Project Development</option>
+                    <option value="Non Engineering - Stone Crusher - Project">Non Engineering - Stone Crusher - Project</option>
                 </select>
             </div>
 
+            <!-- Kategori Golongan -->
             <div>
-                <label class="block text-sm font-semibold text-slate-700 mb-1">Lokasi</label>
-                <input type="text" id="lokasi" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Contoh: Area Kerja A">
+                <label class="block text-sm font-semibold text-slate-700 mb-1">Kategori Golongan <span class="text-red-500">*</span></label>
+                <select id="golongan" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
+                    <option value="">-- Pilih Golongan --</option>
+                    <option value="GENERAL MANAGER">GENERAL MANAGER</option>
+                    <option value="MANAGER">MANAGER</option>
+                    <option value="SUPERINTENDENT">SUPERINTENDENT</option>
+                    <option value="SUPERVISOR">SUPERVISOR</option>
+                    <option value="FOREMAN">FOREMAN</option>
+                    <option value="JR. OFFICER">JR. OFFICER</option>
+                    <option value="CREW">CREW</option>
+                    <option value="HELPER">HELPER</option>
+                    <option value="THL">THL</option>
+                </select>
             </div>
 
+            <!-- Area Kerja -->
             <div>
-                <label class="block text-sm font-semibold text-slate-700 mb-1">Deskripsi Temuan</label>
-                <textarea id="pesan" rows="4" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Jelaskan detail temuan Anda..."></textarea>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Area Kerja <span class="text-red-500">*</span></label>
+                <div class="space-y-2">
+                    <label class="flex items-center gap-2"><input type="radio" name="area" value="LAPANGAN" required class="text-blue-600"> LAPANGAN</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="area" value="OFFICE" class="text-blue-600"> OFFICE</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="area" value="LAPANGAN & OFFICE" class="text-blue-600"> LAPANGAN & OFFICE</label>
+                </div>
             </div>
 
-            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition duration-200 shadow-md">
-                Kirim ke WhatsApp OHS Center
+            <!-- Jam Waktu Tidur -->
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Berapa jam total waktu tidur Anda sebelum bekerja? <span class="text-red-500">*</span></label>
+                <div class="space-y-2">
+                    <label class="flex items-center gap-2"><input type="radio" name="waktutidur" value="< 5 JAM" required class="text-blue-600"> &lt; 5 JAM</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="waktutidur" value="5 JAM" class="text-blue-600"> 5 JAM</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="waktutidur" value="6 JAM" class="text-blue-600"> 6 JAM</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="waktutidur" value="7 JAM" class="text-blue-600"> 7 JAM</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="waktutidur" value="8 JAM" class="text-blue-600"> 8 JAM</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="waktutidur" value="> 8 JAM" class="text-blue-600"> &gt; 8 JAM</label>
+                </div>
+            </div>
+
+            <!-- Kualitas Istirahat -->
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Bagaimana kualitas istirahat/tidur Anda? <span class="text-red-500">*</span></label>
+                <div class="space-y-2">
+                    <label class="flex items-center gap-2"><input type="radio" name="kualitastidur" value="Sangat Buruk" required class="text-blue-600"> Sangat Buruk (Terbangun berkali-kali, lemas)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="kualitastidur" value="Buruk" class="text-blue-600"> Buruk (Masih mengantuk)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="kualitastidur" value="Cukup" class="text-blue-600"> Cukup (Standar)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="kualitastidur" value="Baik" class="text-blue-600"> Baik (Cukup segar)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="kualitastidur" value="Sangat Baik" class="text-blue-600"> Sangat Baik (Sangat fit)</label>
+                </div>
+            </div>
+
+            <!-- Gejala Kesehatan -->
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Gejala Kesehatan (Bisa pilih > 1) <span class="text-red-500">*</span></label>
+                <div class="space-y-2">
+                    <label class="flex items-center gap-2"><input type="checkbox" name="gejala" value="Sakit Kepala/Pusing" class="text-blue-600"> Sakit Kepala / Pusing</label>
+                    <label class="flex items-center gap-2"><input type="checkbox" name="gejala" value="Batuk/Pilek/Sesak" class="text-blue-600"> Batuk / Pilek / Sesak Nafas</label>
+                    <label class="flex items-center gap-2"><input type="checkbox" name="gejala" value="Sakit Perut/Mual" class="text-blue-600"> Sakit Perut / Mual / Diare</label>
+                    <label class="flex items-center gap-2"><input type="checkbox" name="gejala" value="Nyeri Otot" class="text-blue-600"> Nyeri Otot / Pegal Linu</label>
+                    <label class="flex items-center gap-2"><input type="checkbox" name="gejala" value="Pandangan Kabur" class="text-blue-600"> Pandangan Kabur</label>
+                    <label class="flex items-center gap-2"><input type="checkbox" name="gejala" value="Tidak Ada" class="text-blue-600"> Tidak Ada Gejala</label>
+                </div>
+            </div>
+
+            <!-- Kondisi Fokus -->
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Kondisi Fokus & Pikiran <span class="text-red-500">*</span></label>
+                <div class="space-y-2">
+                    <label class="flex items-center gap-2"><input type="radio" name="fokus" value="Fokus & Tenang" required class="text-blue-600"> Fokus & Tenang</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="fokus" value="Sedikit Terganggu" class="text-blue-600"> Sedikit Terganggu</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="fokus" value="Sangat Terganggu" class="text-blue-600"> Sangat Terganggu</label>
+                </div>
+            </div>
+
+            <!-- Obat-obatan -->
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Konsumsi obat kantuk (12 jam terakhir)? <span class="text-red-500">*</span></label>
+                <div class="space-y-2">
+                    <label class="flex items-center gap-2"><input type="radio" name="obat" value="YA" required class="text-blue-600"> YA</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="obat" value="TIDAK" class="text-blue-600"> TIDAK</label>
+                </div>
+            </div>
+
+            <!-- Kesiapan -->
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Kesiapan Bekerja <span class="text-red-500">*</span></label>
+                <div class="space-y-2">
+                    <label class="flex items-center gap-2"><input type="radio" name="kesiapan" value="SIAP & FIT" required class="text-blue-600"> YA, SAYA SIAP & FIT</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="kesiapan" value="TIDAK FIT" class="text-blue-600"> TIDAK, SAYA KURANG SEHAT</label>
+                </div>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition duration-200">
+                Kirim Laporan &rarr;
             </button>
         </form>
 
@@ -59,25 +196,40 @@
     <script>
         document.getElementById('ohsForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const nama = document.getElementById('nama').value;
-            const waPengirim = document.getElementById('waPengirim').value;
-            const kategori = document.getElementById('kategori').value;
-            const lokasi = document.getElementById('lokasi').value;
-            const pesan = document.getElementById('pesan').value;
+            
+            const formData = {
+                nama: document.getElementById('nama').value,
+                nik: document.getElementById('nik').value,
+                wa: document.getElementById('waPengirim').value,
+                email: document.getElementById('email').value || '-',
+                jadwal: document.querySelector('input[name="jadwal"]:checked')?.value || '',
+                departemen: document.getElementById('departemen').value,
+                golongan: document.getElementById('golongan').value,
+                area: document.querySelector('input[name="area"]:checked')?.value || '',
+                tidur: document.querySelector('input[name="waktutidur"]:checked')?.value || '',
+                kualitas: document.querySelector('input[name="kualitastidur"]:checked')?.value || '',
+                gejala: Array.from(document.querySelectorAll('input[name="gejala"]:checked')).map(el => el.value).join(', '),
+                fokus: document.querySelector('input[name="fokus"]:checked')?.value || '',
+                obat: document.querySelector('input[name="obat"]:checked')?.value || '',
+                kesiapan: document.querySelector('input[name="kesiapan"]:checked')?.value || ''
+            };
 
-            const nomorAdmin = "6282239689985";
-            const textPesan = `*LAPORAN BARU - OHS CENTER*%0A` +
-                              `----------------------------%0A` +
-                              `Pelapor: ${nama}%0A` +
-                              `WA: ${waPengirim}%0A` +
-                              `Kategori: ${kategori}%0A` +
-                              `Lokasi: ${lokasi}%0A` +
-                              `Detail: ${pesan}%0A` +
-                              `----------------------------%0A` +
-                              `_Diterima via Web_`;
+            // Link Google Apps Script (Ganti jika sudah ada)
+            const scriptURL = 'MASUKKAN_WEB_APP_URL_ANDA_DI_SINI';
+            
+            if (scriptURL !== 'MASUKKAN_WEB_APP_URL_ANDA_DI_SINI') {
+                fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(formData) });
+            }
 
-            window.open(`https://wa.me/${nomorAdmin}?text=${textPesan}`, '_blank');
+            const pesanWA = `*FIT TO WORK - OHS CENTER*%0A` +
+                            `Nama: ${formData.nama}%0A` +
+                            `NIK: ${formData.nik}%0A` +
+                            `Jadwal: ${formData.jadwal}%0A` +
+                            `Kesiapan: *${formData.kesiapan}*`;
+
+            window.open(`https://wa.me/6282239689985?text=${pesanWA}`, '_blank');
         });
     </script>
 </body>
-</html>
+                                                               </html>
+                        
